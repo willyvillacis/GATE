@@ -1,0 +1,1049 @@
+#====================
+#VISUALIZATION
+#====================
+/vis/open OGLIQt
+/vis/viewer/reset
+/vis/viewer/set/viewpointThetaPhi 60 30
+/vis/viewer/zoom 4
+/vis/viewer/set/style surface
+/vis/drawVolume
+/vis/scene/add/axes
+/vis/scene/endOfEventAction accumulate -4
+
+#====================
+#====================
+#SET MATERIALS
+#====================
+/gate/geometry/setMaterialDatabase GateMaterials.db
+#====================
+# WORLD
+#====================
+/gate/world/geometry/setXLength 1000. mm
+/gate/world/geometry/setYLength 1000. mm
+/gate/world/geometry/setZLength 1000. mm
+#====================
+# SYSTEM - scanner
+#====================
+/gate/world/daughters/name scanner
+/gate/world/daughters/insert cylinder
+/gate/scanner/setMaterial Air
+/gate/scanner/vis/setColor yellow
+/gate/scanner/geometry/setRmax 150. mm
+/gate/scanner/geometry/setRmin 0. mm
+/gate/scanner/geometry/setHeight 202. mm
+/gate/scanner/placement/setRotationAxis 1 0 0
+/gate/scanner/placement/setRotationAngle 90 deg
+/gate/scanner/vis/forceWireframe
+#====================
+# FIRST LEVEL OF THE SYSTEM - portamuestra
+#====================
+/gate/scanner/daughters/name cylinderportamuestra
+/gate/scanner/daughters/insert cylinder
+/gate/cylinderportamuestra/setMaterial StainlessSteel
+/gate/cylinderportamuestra/vis/setColor gray
+/gate/cylinderportamuestra/geometry/setRmax 148. mm
+/gate/cylinderportamuestra/geometry/setRmin 0. mm
+/gate/cylinderportamuestra/geometry/setHeight 200. mm
+/gate/cylinderportamuestra/vis/forceWireframe
+/gate/geometry/rebuild
+#====================
+# SECOND LEVEL OF THE SYSTEM - aireportamuestra
+#====================
+/gate/cylinderportamuestra/daughters/name aireportamuestra
+/gate/cylinderportamuestra/daughters/insert cylinder
+/gate/aireportamuestra/setMaterial Air
+/gate/aireportamuestra/vis/setColor yellow
+/gate/aireportamuestra/geometry/setRmax 144. mm
+/gate/aireportamuestra/geometry/setRmin 0. mm
+/gate/aireportamuestra/geometry/setHeight 198. mm
+/gate/aireportamuestra/vis/forceWireframe
+/gate/geometry/rebuild
+#====================
+#THIRD LEVEL OF THE SYSTEM tubo Fricke
+#====================
+/gate/aireportamuestra/daughters/name fricke
+/gate/aireportamuestra/daughters/insert cylinder
+/gate/fricke/geometry/setRmax 17 mm
+/gate/fricke/geometry/setRmin 0. mm
+/gate/fricke/geometry/setHeight 101. mm
+/gate/fricke/setMaterial Glass
+/gate/fricke/vis/setColor gray
+/gate/fricke/vis/forceWireframe
+/gate/geometry/rebuild
+#====================
+#FOURTH LEVEL OF THE SYSTEM tapa tubo Fricke
+#====================
+/gate/aireportamuestra/daughters/name tapa
+/gate/aireportamuestra/daughters/insert cylinder
+/gate/tapa/placement/setTranslation 0. 0. 1 mm
+/gate/tapa/placement/setMagOfTranslation -50.5 mm
+/gate/tapa/geometry/setRmax 17 mm
+/gate/tapa/geometry/setRmin 0. mm
+/gate/tapa/geometry/setHeight 15. mm
+/gate/tapa/setMaterial Polypropilene
+/gate/tapa/vis/setColor white
+/gate/tapa/vis/forceWireframe
+/gate/geometry/rebuild
+#====================
+#FIFTH LEVEL OF THE SYSTEM aguatubo Fricke
+#====================
+/gate/fricke/daughters/name aguafricke
+/gate/fricke/daughters/insert cylinder
+/gate/aguafricke/geometry/setRmax 15 mm
+/gate/aguafricke/geometry/setRmin 0. mm
+/gate/aguafricke/geometry/setHeight 84. mm
+/gate/aguafricke/setMaterial Water
+/gate/aguafricke/vis/setColor blue
+/gate/aguafricke/vis/forceWireframe
+/gate/geometry/rebuild
+
+#====================
+#ATTACH VOLUMES TO A SYSTEM
+#====================
+/gate/systems/scanner/level1/attach cylinderportamuestra
+/gate/systems/scanner/level1/attach aireportamuestra
+/gate/systems/scanner/level2/attach fricke
+/gate/systems/scanner/level2/attach tapa
+/gate/systems/scanner/level3/attach aguafricke
+
+#====================
+#DEFINE A SENSITIVE DETECTOR
+#====================
+/gate/aguafricke/attachCrystalSD
+/gate/systems/scanner/describe
+
+#====================
+#GEOMETRY-RACK
+#====================
+#/gate/world/daughters/name rack
+#/gate/world/daughters/insert cylinder
+#/gate/rack/setMaterial StainlessSteel  
+#/gate/rack/vis/setColor gray           
+#/gate/rack/geometry/setRmax 171. mm
+#/gate/rack/geometry/setRmin 151. mm
+#/gate/rack/geometry/setHeight 202. mm
+#/gate/rack/placement/setRotationAxis 1 0 0
+#/gate/rack/placement/setRotationAngle 90 deg
+#/gate/rack/vis/forceWireframe              
+#/gate/rack/vis/setVisible true
+#/gate/geometry/rebuild       
+
+#====================
+# FIRST LEVEL OF RACK - lapiz
+#====================
+#/gate/rack/daughters/name lapiz
+#/gate/rack/daughters/insert cylinder
+#/gate/lapiz/setMaterial StainlessSteel
+#/gate/lapiz/placement/setTranslation 161. 0. 0. mm
+#/gate/lapiz/vis/setColor gray
+#/gate/lapiz/geometry/setRmax 10. mm
+#/gate/lapiz/geometry/setRmin 0. mm
+#/gate/lapiz/geometry/setHeight 202. mm
+#/gate/lapiz/vis/forceSolid
+#/gate/geometry/rebuild
+
+#====================
+# REPEAT-lapiz
+#====================
+#/gate/lapiz/repeaters/insert ring
+#/gate/lapiz/ring/setRepeatNumber 16
+#/gate/lapiz/vis/forceSolid
+#/gate/geometry/rebuild
+
+#====================
+# SECOND LEVEL OF RACK - Cobalt60
+#====================
+#/gate/lapiz/daughters/name Cobalt60
+#/gate/lapiz/daughters/insert cylinder
+#/gate/Cobalt60/setMaterial Cobalt60
+#/gate/Cobalt60/vis/setColor blue
+#/gate/Cobalt60/geometry/setRmax 9. mm
+#/gate/Cobalt60/geometry/setRmin 0. mm
+#/gate/Cobalt60/geometry/setHeight 201. mm
+#/gate/Cobalt60/vis/forceWireframe
+#/gate/geometry/rebuild
+
+#====================
+#RACK DEFINED AS SENSITIVE
+#====================
+#/gate/rack/attachPhantomSD
+
+#====================
+#PHYSICS PROCESSES
+#====================
+/gate/physics/addPhysicsList QGSP_BERT_EMV
+/gate/physics/addProcess PhotoElectric gamma
+/gate/physics/processes/PhotoElectric/setModel StandardModel
+/gate/physics/addProcess Compton gamma
+/gate/physics/processes/Compton/setModel StandardModel
+/gate/physics/addProcess RayleighScattering
+/gate/physics/processes/RayleighScattering/setModel PenelopeModel
+/gate/physics/addProcess RadioactiveDecay
+/gate/physics/processList Enabled 
+/gate/physics/processList Initialized
+
+#====================
+#INITIALIZE
+#====================
+/gate/run/initialize
+
+#====================
+#ADDER
+#====================
+/gate/digitizer/Singles/insert adder
+
+#====================
+#READOUT
+#====================
+/gate/digitizer/Singles/insert readout
+/gate/digitizer/Singles/readout/setDepth 1
+
+#====================
+#ENERGY BLURRING
+#====================
+/gate/digitizer/Singles/insert blurring
+/gate/digitizer/Singles/blurring/setResolution 0.125
+/gate/digitizer/Singles/blurring/setEnergyOfReference 1173.228 keV
+/gate/digitizer/Singles/blurring/setEnergyOfReference 1332.492 keV
+
+#====================
+#ENERGY WINDOW
+#====================
+/gate/digitizer/Singles/insert thresholder
+/gate/digitizer/Singles/thresholder/setThreshold 0. keV
+/gate/digitizer/Singles/insert upholder
+/gate/digitizer/Singles/upholder/setUphold 2000. keV
+
+#====================
+#COINCIDENCE SORTER
+#====================
+#/gate/digitizer/Coincidences/setWindow 10. ns
+
+#====================
+#SOURCE 1 
+#====================
+/gate/source/addSource SourceCo601 gps
+#/gate/source/SourceCo601/setActivity 422000 Bq
+/gate/application/setNumberOfPrimariesPerRun 5000000
+/gate/source/SourceCo601/setType backtoback
+#====================
+#POSITION
+#====================
+/gate/source/SourceCo601/gps/centre 161. 0. 0. mm
+#====================
+#PARTICLE
+#====================
+/gate/source/SourceCo601/gps/particle gamma
+#====================
+#TYPE
+#====================
+/gate/source/SourceCo601/gps/type Volume
+/gate/source/SourceCo601/gps/shape Cylinder
+/gate/source/SourceCo601/gps/radius 8. mm
+/gate/source/SourceCo601/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+/gate/source/SourceCo601/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+/gate/source/SourceCo601/gps/mintheta 0. deg
+/gate/source/SourceCo601/gps/maxtheta 180. deg
+/gate/source/SourceCo601/gps/minphi 0. deg
+/gate/source/SourceCo601/gps/maxphi 360. deg
+/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+/gate/source/SourceCo601/gps/ene/type Mono
+/gate/source/SourceCo601/gps/ene/mono 1173.228 keV
+/gate/source/SourceCo601/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+/gate/source/SourceCo601/visualize 10000 green 20
+
+#====================
+#REPEAT SOURCE 16 TIMES EN CADA LAPIZ
+#====================
+#====================
+#SOURCE 2 
+#====================
+#/gate/source/addSource SourceCo602 gps
+#/gate/source/SourceCo602/setActivity 26375 Bq
+#/gate/source/SourceCo602/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo602/gps/centre 148.7 0. 61.6 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo602/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo602/gps/type Volume
+#/gate/source/SourceCo602/gps/shape Cylinder
+#/gate/source/SourceCo602/gps/radius 8. mm
+#/gate/source/SourceCo602/gps/halfy 100. mm
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo602/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo602/gps/mintheta 0. deg
+#/gate/source/SourceCo602/gps/maxtheta 180. deg
+#/gate/source/SourceCo602/gps/minphi 0. deg
+#/gate/source/SourceCo602/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo602/gps/ene/type Mono
+#/gate/source/SourceCo602/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo602/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo602/visualize 10000 green 20
+
+#====================
+#SOURCE 3 
+#====================
+#/gate/source/addSource SourceCo603 gps
+#/gate/source/SourceCo603/setActivity 26375 Bq
+#/gate/source/SourceCo603/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo603/gps/centre 113.8 0. 113.8 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo603/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo603/gps/type Volume
+#/gate/source/SourceCo603/gps/shape Cylinder
+#/gate/source/SourceCo603/gps/radius 8. mm
+#/gate/source/SourceCo603/gps/halfy 100. mm
+#
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo603/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo603/gps/mintheta 0. deg
+#/gate/source/SourceCo603/gps/maxtheta 180. deg
+#/gate/source/SourceCo603/gps/minphi 0. deg
+#/gate/source/SourceCo603/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo603/gps/ene/type Mono
+#/gate/source/SourceCo603/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo603/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo603/visualize 10000 green 20
+
+#====================
+#SOURCE 4 
+#====================
+#/gate/source/addSource SourceCo604 gps
+#/gate/source/SourceCo604/setActivity 26375 Bq
+#/gate/source/SourceCo604/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo604/gps/centre 61.6 0. 148.7 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo604/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo604/gps/type Volume
+#/gate/source/SourceCo604/gps/shape Cylinder
+#/gate/source/SourceCo604/gps/radius 8. mm
+#/gate/source/SourceCo604/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo604/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo604/gps/mintheta 0. deg
+#/gate/source/SourceCo604/gps/maxtheta 180. deg
+#/gate/source/SourceCo604/gps/minphi 0. deg
+#/gate/source/SourceCo604/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo604/gps/ene/type Mono
+#/gate/source/SourceCo604/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo604/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo604/visualize 10000 green 20
+
+#====================
+#SOURCE 5 
+#====================
+#/gate/source/addSource SourceCo605 gps
+#/gate/source/SourceCo605/setActivity 26375 Bq
+#/gate/source/SourceCo605/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo605/gps/centre 0. 0. 161. mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo605/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo605/gps/type Volume
+#/gate/source/SourceCo605/gps/shape Cylinder
+#/gate/source/SourceCo605/gps/radius 8. mm
+#/gate/source/SourceCo605/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo605/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo605/gps/mintheta 0. deg
+#/gate/source/SourceCo605/gps/maxtheta 180. deg
+#/gate/source/SourceCo605/gps/minphi 0. deg
+#/gate/source/SourceCo605/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo605/gps/ene/type Mono
+#/gate/source/SourceCo605/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo605/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo605/visualize 10000 green 20
+
+#====================
+#SOURCE 6 
+#====================
+#/gate/source/addSource SourceCo606 gps
+#/gate/source/SourceCo606/setActivity 26375 Bq
+#/gate/source/SourceCo606/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo606/gps/centre -61.6 0. 148.7 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo606/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo606/gps/type Volume
+#/gate/source/SourceCo606/gps/shape Cylinder
+#/gate/source/SourceCo606/gps/radius 8. mm
+#/gate/source/SourceCo606/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo606/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo606/gps/mintheta 0. deg
+#/gate/source/SourceCo606/gps/maxtheta 180. deg
+#/gate/source/SourceCo606/gps/minphi 0. deg
+#/gate/source/SourceCo606/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo606/gps/ene/type Mono
+#/gate/source/SourceCo606/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo606/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo606/visualize 10000 green 20
+
+#====================
+#SOURCE 7 
+#====================
+#/gate/source/addSource SourceCo607 gps
+#/gate/source/SourceCo607/setActivity 26375 Bq
+#/gate/source/SourceCo607/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo607/gps/centre -113.8 0. 113.8 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo607/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo607/gps/type Volume
+#/gate/source/SourceCo607/gps/shape Cylinder
+#/gate/source/SourceCo607/gps/radius 8. mm
+#/gate/source/SourceCo607/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo607/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo607/gps/mintheta 0. deg
+#/gate/source/SourceCo607/gps/maxtheta 180. deg
+#/gate/source/SourceCo607/gps/minphi 0. deg
+#/gate/source/SourceCo607/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo607/gps/ene/type Mono
+#/gate/source/SourceCo607/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo607/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo607/visualize 10000 green 20
+
+#====================
+#SOURCE 8 
+#====================
+#/gate/source/addSource SourceCo608 gps
+#/gate/source/SourceCo608/setActivity 26375 Bq
+#/gate/source/SourceCo608/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo608/gps/centre -148.7 0. 61.6 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo608/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo608/gps/type Volume
+#/gate/source/SourceCo608/gps/shape Cylinder
+#/gate/source/SourceCo608/gps/radius 8. mm
+#/gate/source/SourceCo608/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo608/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo608/gps/mintheta 0. deg
+#/gate/source/SourceCo608/gps/maxtheta 180. deg
+#/gate/source/SourceCo608/gps/minphi 0. deg
+#/gate/source/SourceCo608/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo608/gps/ene/type Mono
+#/gate/source/SourceCo608/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo608/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo608/visualize 10000 green 20
+
+#====================
+#SOURCE 9
+#====================
+#/gate/source/addSource SourceCo609 gps
+#/gate/source/SourceCo609/setActivity 26375 Bq
+#/gate/source/SourceCo609/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo609/gps/centre -161. 0. 0. mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo609/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo609/gps/type Volume
+#/gate/source/SourceCo609/gps/shape Cylinder
+#/gate/source/SourceCo609/gps/radius 8. mm
+#/gate/source/SourceCo609/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo609/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo609/gps/mintheta 0. deg
+#/gate/source/SourceCo609/gps/maxtheta 180. deg
+#/gate/source/SourceCo609/gps/minphi 0. deg
+#/gate/source/SourceCo609/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo609/gps/ene/type Mono
+#/gate/source/SourceCo609/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo609/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo609/visualize 10000 green 20
+
+#====================
+#SOURCE 10 
+#====================
+#/gate/source/addSource SourceCo6010 gps
+#/gate/source/SourceCo6010/setActivity 26375 Bq
+#/gate/source/SourceCo6010/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo6010/gps/centre -148.7 0. -61.6 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo6010/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo6010/gps/type Volume
+#/gate/source/SourceCo6010/gps/shape Cylinder
+#/gate/source/SourceCo6010/gps/radius 8. mm
+#/gate/source/SourceCo6010/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo6010/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo6010/gps/mintheta 0. deg
+#/gate/source/SourceCo6010/gps/maxtheta 180. deg
+#/gate/source/SourceCo6010/gps/minphi 0. deg
+#/gate/source/SourceCo6010/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo6010/gps/ene/type Mono
+#/gate/source/SourceCo6010/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo6010/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo6010/visualize 10000 green 20
+
+#====================
+#SOURCE 11 
+#====================
+#/gate/source/addSource SourceCo6011 gps
+#/gate/source/SourceCo6011/setActivity 26375 Bq
+#/gate/source/SourceCo6011/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo6011/gps/centre -113.8 0. -113.8 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo6011/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo6011/gps/type Volume
+#/gate/source/SourceCo6011/gps/shape Cylinder
+#/gate/source/SourceCo6011/gps/radius 8. mm
+#/gate/source/SourceCo6011/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo6011/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo6011/gps/mintheta 0. deg
+#/gate/source/SourceCo6011/gps/maxtheta 180. deg
+#/gate/source/SourceCo6011/gps/minphi 0. deg
+#/gate/source/SourceCo6011/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo6011/gps/ene/type Mono
+#/gate/source/SourceCo6011/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo6011/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo6011/visualize 10000 green 20
+
+#====================
+#SOURCE 12 
+#====================
+#/gate/source/addSource SourceCo6012 gps
+#/gate/source/SourceCo6012/setActivity 26375 Bq
+#/gate/source/SourceCo6012/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo6012/gps/centre -61.6 0. -148.7 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo6012/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo6012/gps/type Volume
+#/gate/source/SourceCo6012/gps/shape Cylinder
+#/gate/source/SourceCo6012/gps/radius 8. mm
+#/gate/source/SourceCo6012/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo6012/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo6012/gps/mintheta 0. deg
+#/gate/source/SourceCo6012/gps/maxtheta 180. deg
+#/gate/source/SourceCo6012/gps/minphi 0. deg
+#/gate/source/SourceCo6012/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo6012/gps/ene/type Mono
+#/gate/source/SourceCo6012/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo6012/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo6012/visualize 10000 green 20
+
+#====================
+#SOURCE 13 
+#====================
+#/gate/source/addSource SourceCo6013 gps
+#/gate/source/SourceCo6013/setActivity 26375 Bq
+#/gate/source/SourceCo6013/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo6013/gps/centre 0. 0. -161. mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo6013/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo6013/gps/type Volume
+#/gate/source/SourceCo6013/gps/shape Cylinder
+#/gate/source/SourceCo6013/gps/radius 8. mm
+#/gate/source/SourceCo6013/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo6013/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo6013/gps/mintheta 0. deg
+#/gate/source/SourceCo6013/gps/maxtheta 180. deg
+#/gate/source/SourceCo6013/gps/minphi 0. deg
+#/gate/source/SourceCo6013/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo6013/gps/ene/type Mono
+#/gate/source/SourceCo6013/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo6013/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo6013/visualize 10000 green 20
+
+#====================
+#SOURCE 14 
+#====================
+#/gate/source/addSource SourceCo6014 gps
+#/gate/source/SourceCo6014/setActivity 26375 Bq
+#/gate/source/SourceCo6014/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo6014/gps/centre 61.6 0. -148.7 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo6014/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo6014/gps/type Volume
+#/gate/source/SourceCo6014/gps/shape Cylinder
+#/gate/source/SourceCo6014/gps/radius 8. mm
+#/gate/source/SourceCo6014/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo6014/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo6014/gps/mintheta 0. deg
+#/gate/source/SourceCo6014/gps/maxtheta 180. deg
+#/gate/source/SourceCo6014/gps/minphi 0. deg
+#/gate/source/SourceCo6014/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo6014/gps/ene/type Mono
+#/gate/source/SourceCo6014/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo6014/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo6014/visualize 10000 green 20
+
+#====================
+#SOURCE 15 
+#====================
+#/gate/source/addSource SourceCo6015 gps
+#/gate/source/SourceCo6015/setActivity 26375 Bq
+#/gate/source/SourceCo6015/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo6015/gps/centre 113.8 0. -113.8 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo6015/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo6015/gps/type Volume
+#/gate/source/SourceCo6015/gps/shape Cylinder
+#/gate/source/SourceCo6015/gps/radius 8. mm
+#/gate/source/SourceCo6015/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo6015/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo6015/gps/mintheta 0. deg
+#/gate/source/SourceCo6015/gps/maxtheta 180. deg
+#/gate/source/SourceCo6015/gps/minphi 0. deg
+#/gate/source/SourceCo6015/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo6015/gps/ene/type Mono
+#/gate/source/SourceCo6015/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo6015/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo6015/visualize 10000 green 20
+
+#====================
+#SOURCE 16 
+#====================
+#/gate/source/addSource SourceCo6016 gps
+#/gate/source/SourceCo6016/setActivity 26375 Bq
+#/gate/source/SourceCo6016/setType backtoback
+#====================
+#POSITION
+#====================
+#/gate/source/SourceCo6016/gps/centre 148.7 0. -61.6 mm
+#====================
+#PARTICLE
+#====================
+#/gate/source/SourceCo6016/gps/particle gamma
+#====================
+#TYPE
+#====================
+#/gate/source/SourceCo6016/gps/type Volume
+#/gate/source/SourceCo6016/gps/shape Cylinder
+#/gate/source/SourceCo6016/gps/radius 8. mm
+#/gate/source/SourceCo6016/gps/halfy 100. mm
+
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+#/gate/source/SourceCo6016/gps/angtype iso
+
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+#/gate/source/SourceCo6016/gps/mintheta 0. deg
+#/gate/source/SourceCo6016/gps/maxtheta 180. deg
+#/gate/source/SourceCo6016/gps/minphi 0. deg
+#/gate/source/SourceCo6016/gps/maxphi 360. deg
+#/gate/source/list
+
+#====================
+#SET ENERGY DISTRIBUTION
+#====================
+#/gate/source/SourceCo6016/gps/ene/type Mono
+#/gate/source/SourceCo6016/gps/ene/mono 1173.228 keV
+#/gate/source/SourceCo6016/gps/ene/mono 1332.492 keV
+
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+#/gate/source/SourceCo6016/visualize 10000 green 20
+
+#====================
+#ASCII OUTPUT FORMAT
+#====================
+/gate/output/ascii/enable
+/gate/output/ascii/setFileName testCo60SCAN
+/gate/output/ascii/setOutFileHitsFlag 1
+/gate/output/ascii/setOutFileSinglesFlag 1
+
+#====================
+#ROOT OUTPUT FORMAT
+#====================
+/gate/output/root/enable
+/gate/output/root/setFileName testCo60SCAN
+/gate/output/root/setRootSinglesFlag 1
+
+#====================
+#TIME SLICE
+#====================
+/gate/application/setTimeSlice     10.  s
+/gate/application/setTimeStart     0.  s
+/gate/application/setTimeStop      1000.  s
+
+#====================
+#SEED 
+#====================
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed default
+/gate/random/verbose 0
+
+#====================
+#START ACQUISITION
+#====================
+/gate/application/startDAQ
+
+#====================
+#DOSE MEASUREMENT (DOSE ACTOR)
+#====================
+#/gate/actor/addActor DoseActor MyActor
+#/gate/actor/MyActor/attachTo aguafricke
+#/gate/actor/MyActor/stepHitType random
+#/gate/actor/MyActor/setSize 0. 0. 0. mm
+#/gate/actor/MyActor/setResolution 1 1 1
+
+#/gate/actor/MyActor/enableDose true
+
+#/gate/actor/MyActor/enableEdep true
+#/gate/actor/MyActor/enableSquaredEdep false
+#/gate/actor/MyActor/enableUncertaintyEdep false
+#/gate/actor/MyActor/normaliseDoseToMax true
+
+
+#/gate/actor/MyActor/save MyOutputFile.txt
+#/gate/actor/MyActor/saveEveryNSeconds 10
+
+
+
+
