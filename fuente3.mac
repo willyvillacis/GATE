@@ -223,8 +223,8 @@
 #SOURCE 1 
 #====================
 /gate/source/addSource SourceCo601 gps
-#/gate/source/SourceCo601/setActivity 422000 Bq
-/gate/application/setNumberOfPrimariesPerRun 5000000
+/gate/source/SourceCo601/setActivity 422000 Bq
+#/gate/application/setNumberOfPrimariesPerRun 5000000
 /gate/source/SourceCo601/setType backtoback
 #====================
 #POSITION
