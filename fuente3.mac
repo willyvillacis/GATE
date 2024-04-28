@@ -1010,7 +1010,7 @@
 #====================
 /gate/application/setTimeSlice     10.  s
 /gate/application/setTimeStart     0.  s
-/gate/application/setTimeStop      1000.  s
+/gate/application/setTimeStop      60.  s
 
 #====================
 #SEED 
