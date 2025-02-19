@@ -1,0 +1,198 @@
+#====================
+#VISUALIZATION
+#====================
+/vis/open OGLIQt
+/vis/viewer/reset
+/vis/viewer/set/viewpointThetaPhi 60 30
+/vis/viewer/zoom 4
+/vis/viewer/set/style surface
+/vis/drawVolume
+/vis/scene/add/axes
+/vis/scene/endOfEventAction accumulate -4
+#====================
+#====================
+#SET MATERIALS
+#====================
+/gate/geometry/setMaterialDatabase GateMaterials.db
+#====================
+# WORLD
+#====================
+/gate/world/geometry/setXLength 100. cm
+/gate/world/geometry/setYLength 100. cm
+/gate/world/geometry/setZLength 100. cm
+#====================
+# SYSTEM - scanner
+#====================
+/gate/world/daughters/name scanner
+/gate/world/daughters/insert cylinder
+/gate/scanner/setMaterial Air
+/gate/scanner/geometry/setRmax 10. cm
+/gate/scanner/geometry/setRmin 0. cm
+/gate/scanner/geometry/setHeight 20. cm
+#/gate/scanner/placement/setRotationAxis 1 0 0
+#/gate/scanner/placement/setRotationAngle 270 deg
+#/gate/scanner/vis/forceWireframe
+#====================
+#FIRST LEVEL OF THE SYSTEM
+#====================
+/gate/scanner/daughters/name cylinder1
+/gate/scanner/daughters/insert cylinder
+/gate/cylinder1/placement/setTranslation 0. 0. 0. cm
+/gate/cylinder1/geometry/setRmax 7.8 cm
+/gate/cylinder1/geometry/setRmin 0. cm
+/gate/cylinder1/geometry/setHeight 12.64 cm
+/gate/cylinder1/setMaterial Aluminium
+/gate/cylinder1/vis/setColor gray
+/gate/cylinder1/vis/forceWireframe
+/gate/geometry/rebuild
+#====================
+#SECOND LEVEL OF THE SYSTEM
+#====================
+/gate/cylinder1/daughters/name cylinder2
+/gate/cylinder1/daughters/insert cylinder
+/gate/cylinder2/placement/setTranslation 0. 0. 0. cm
+/gate/cylinder2/geometry/setRmax 7.2 cm
+/gate/cylinder2/geometry/setRmin 0. cm
+/gate/cylinder2/geometry/setHeight 12.44 cm
+/gate/cylinder2/setMaterial Air
+/gate/cylinder2/vis/setColor yellow
+/gate/cylinder2/vis/forceWireframe
+/gate/geometry/rebuild
+#====================
+#CRYSTAL
+#====================
+/gate/cylinder2/daughters/name crystal
+/gate/cylinder2/daughters/insert cylinder
+/gate/crystal/placement/setTranslation 0. 0. 4.18 cm
+/gate/crystal/geometry/setRmax 5.05 cm
+/gate/crystal/geometry/setRmin 0. cm
+/gate/crystal/geometry/setHeight 2.04 cm
+/gate/crystal/setMaterial Germanium
+/gate/crystal/vis/setColor red
+/gate/crystal/vis/forceWireframe
+/gate/geometry/rebuild
+#====================
+#ATTACH VOLUMES TO A SYSTEM
+#====================
+/gate/systems/scanner/level1/attach cylinder1
+/gate/systems/scanner/level2/attach cylinder2
+/gate/systems/scanner/level3/attach crystal
+#====================
+#DEFINE A SENSITIVE DETECTOR
+#====================
+/gate/crystal/attachCrystalSD
+/gate/systems/scanner/describe
+#====================
+#PHYSICS PROCESSES
+#====================
+/gate/physics/addPhysicsList QGSP_BERT_EMV
+/gate/physics/addProcess PhotoElectric gamma
+/gate/physics/processes/PhotoElectric/setModel StandardModel
+/gate/physics/addProcess Compton gamma
+/gate/physics/processes/Compton/setModel StandardModel
+/gate/physics/addProcess RayleighScattering
+/gate/physics/processes/RayleighScattering/setModel PenelopeModel
+/gate/physics/addProcess RadioactiveDecay
+/gate/physics/processList Enabled 
+/gate/physics/processList Initialized
+#====================
+#INITIALIZE
+#====================
+/gate/run/initialize
+#====================
+#ADDER
+#====================
+/gate/digitizer/Singles/insert adder
+#====================
+#READOUT
+#====================
+/gate/digitizer/Singles/insert readout
+/gate/digitizer/Singles/readout/setDepth 1
+#====================
+#ENERGY BLURRING
+#====================
+/gate/digitizer/Singles/insert blurring
+/gate/digitizer/Singles/blurring/setResolution 0.015
+/gate/digitizer/Singles/blurring/setEnergyOfReference 661.657 keV
+#====================
+#ENERGY WINDOW
+#====================
+/gate/digitizer/Singles/insert thresholder
+/gate/digitizer/Singles/thresholder/setThreshold 0. keV
+/gate/digitizer/Singles/insert upholder
+/gate/digitizer/Singles/upholder/setUphold 2000. keV
+
+#====================
+#SOURCE
+#====================
+/gate/source/addSource calibrationSourceCs137 gps
+/gate/source/calibrationSourceCs137/setActivity 425000. becquerel
+/gate/source/calibrationSourceCs137/setType backtoback
+#====================
+#POSITION
+#====================
+/gate/source/calibrationSourceCs137/gps/centre 0. 0. 12.64 cm
+#====================
+#PARTICLE
+#====================
+/gate/source/calibrationSourceCs137/gps/particle gamma
+/gate/source/calibrationSourceCs137/gps/ene/type Mono
+/gate/source/calibrationSourceCs137/gps/ene/mono 661.657 keV
+#====================
+#TYPE
+#====================
+/gate/source/calibrationSourceCs137/gps/type Point
+#====================
+#SET ANGULAR DISTRIBUITION
+#====================
+/gate/source/calibrationSourceCs137/gps/angtype iso
+#====================
+#SET MIN AND MAX EMISSION ANGLES
+#==================== 
+/gate/source/calibrationSourceCs137/gps/mintheta 0. deg
+/gate/source/calibrationSourceCs137/gps/maxtheta 180. deg
+/gate/source/calibrationSourceCs137/gps/minphi    0. deg
+/gate/source/calibrationSourceCs137/gps/maxphi 360. deg
+/gate/source/list
+#====================
+#VISUALIZATION SOURCE
+#==================== 
+/gate/source/calibrationSourceCs137/visualize 1000000 green 20
+#====================
+#ASCII OUTPUT FORMAT
+#====================
+/gate/output/ascii/enable
+/gate/output/ascii/setFileName testCs137
+/gate/output/ascii/setOutFileHitsFlag 0
+/gate/output/ascii/setOutFileSinglesFlag 1
+#====================
+#ROOT OUTPUT FORMAT
+#====================
+/gate/output/root/enable
+/gate/output/root/setFileName testCs137
+#/gate/output/root/saveHistograms
+#/gate/output/root/printHistogramsToAscii histogram.txt
+/gate/output/root/setRootSinglesFlag 1
+#/gate/output/root/setRootCoincidencesFlag 1
+
+#====================
+#START ACQUISITION
+#====================
+/gate/application/setTotalNumberOfPrimaries 1700000
+#====================
+#TIME SLICE
+#====================
+/gate/application/setTimeSlice     1.  s
+/gate/application/setTimeStart     0.  s
+/gate/application/setTimeStop     10.  s
+#====================
+#SEED 
+#====================
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed default
+/gate/random/verbose 0
+#====================
+#START ACQUISITION
+#====================
+/gate/application/startDAQ
+
