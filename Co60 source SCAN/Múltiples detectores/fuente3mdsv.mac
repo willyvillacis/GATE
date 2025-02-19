@@ -1836,14 +1836,14 @@
 
 
 #====================
-#Actividades totales de fuente 07/03/2023=119.2 Ci, para 10/04/2023=117.788 Ci y para 12/04/2023=117.704 Ci, obteniendo un valor promedio de actividad de 118.23 Ci, como son 16 lapices la actividad por cada lapiz = 7.38837634 Ci
+#Actividad total de fuente 07/03/2023=119.20 Ci, como son 16 lapices la actividad por cada lapiz = 7.45 Ci
 #====================
 
 #====================
-#SOURCE 1 1173.228 keV 
+#SOURCE 1 1173.228 keV (4.8e+06 es el limite que me quede antes de killed)(como son dos fuente 1 de diferentes enregías la actividad de 7.45 Ci se divide para dos, siendo 3.725 Ci)
 #====================
 /gate/source/addSource SourceCo6011 gps
-/gate/source/SourceCo6011/setActivity 3.6946875 Ci
+/gate/source/SourceCo6011/setActivity 3.725 Ci
 /gate/source/SourceCo6011/setType backtoback
 
 #====================
@@ -1894,7 +1894,7 @@
 #SOURCE 1 1332.492 keV (4.8e+06 es el limite que me quede antes de killed)
 #====================
 /gate/source/addSource SourceCo6012 gps
-/gate/source/SourceCo6012/setActivity 3.6946875 Ci
+/gate/source/SourceCo6012/setActivity 3.725 Ci
 /gate/source/SourceCo6012/setType backtoback
 
 #====================
@@ -1947,7 +1947,7 @@
 #SOURCE 2 1173.228 keV
 #====================
 /gate/source/addSource SourceCo6021 gps
-/gate/source/SourceCo6021/setActivity 3.6946875 Ci
+/gate/source/SourceCo6021/setActivity 3.725 Ci
 /gate/source/SourceCo6021/setType backtoback
 
 #====================
@@ -1997,7 +1997,7 @@
 #SOURCE 2 1332.492 keV
 #====================
 /gate/source/addSource SourceCo6022 gps
-/gate/source/SourceCo6022/setActivity 3.6946875 Ci
+/gate/source/SourceCo6022/setActivity 3.725 Ci
 /gate/source/SourceCo6022/setType backtoback
 
 #====================
@@ -2047,7 +2047,7 @@
 #SOURCE 3 1173.228 keV
 #====================
 /gate/source/addSource SourceCo6031 gps
-/gate/source/SourceCo6031/setActivity 3.6946875 Ci
+/gate/source/SourceCo6031/setActivity 3.725 Ci
 /gate/source/SourceCo6031/setType backtoback
 
 #====================
@@ -2097,7 +2097,7 @@
 #SOURCE 3 1332.492 keV
 #====================
 /gate/source/addSource SourceCo6032 gps
-/gate/source/SourceCo6032/setActivity 3.6946875 Ci
+/gate/source/SourceCo6032/setActivity 3.725 Ci
 /gate/source/SourceCo6032/setType backtoback
 
 #====================
@@ -2147,7 +2147,7 @@
 #SOURCE 4 1173.228 keV
 #====================
 /gate/source/addSource SourceCo6041 gps
-/gate/source/SourceCo6041/setActivity 3.6946875 Ci
+/gate/source/SourceCo6041/setActivity 3.725 Ci
 /gate/source/SourceCo6041/setType backtoback
 
 #====================
@@ -2197,7 +2197,7 @@
 #SOURCE 4 1332.492 keV
 #====================
 /gate/source/addSource SourceCo6042 gps
-/gate/source/SourceCo6042/setActivity 3.6946875 Ci
+/gate/source/SourceCo6042/setActivity 3.725 Ci
 /gate/source/SourceCo6042/setType backtoback
 
 #====================
@@ -2247,7 +2247,7 @@
 #SOURCE 5 1173.228 keV
 #====================
 /gate/source/addSource SourceCo6051 gps
-/gate/source/SourceCo6051/setActivity 3.6946875 Ci
+/gate/source/SourceCo6051/setActivity 3.725 Ci
 /gate/source/SourceCo6051/setType backtoback
 
 #====================
@@ -2297,7 +2297,7 @@
 #SOURCE 5 1332.492 keV
 #====================
 /gate/source/addSource SourceCo6052 gps
-/gate/source/SourceCo6052/setActivity 3.6946875 Ci
+/gate/source/SourceCo6052/setActivity 3.725 Ci
 /gate/source/SourceCo6052/setType backtoback
 
 #====================
@@ -2347,7 +2347,7 @@
 #SOURCE 6 1173.228 keV
 #====================
 /gate/source/addSource SourceCo6061 gps
-/gate/source/SourceCo6061/setActivity 3.6946875 Ci
+/gate/source/SourceCo6061/setActivity 3.725 Ci
 /gate/source/SourceCo6061/setType backtoback
 
 #====================
@@ -2397,7 +2397,7 @@
 #SOURCE 6 1332.492 keV
 #====================
 /gate/source/addSource SourceCo6062 gps
-/gate/source/SourceCo6062/setActivity 3.6946875 Ci
+/gate/source/SourceCo6062/setActivity 3.725 Ci
 /gate/source/SourceCo6062/setType backtoback
 
 #====================
@@ -2447,7 +2447,7 @@
 #SOURCE 7 1173.228 keV
 #====================
 /gate/source/addSource SourceCo6071 gps
-/gate/source/SourceCo6071/setActivity 3.6946875 Ci
+/gate/source/SourceCo6071/setActivity 3.725 Ci
 /gate/source/SourceCo6071/setType backtoback
 
 #====================
@@ -2497,7 +2497,7 @@
 #SOURCE 7 1332.492 keV
 #====================
 /gate/source/addSource SourceCo6072 gps
-/gate/source/SourceCo6072/setActivity 3.6946875 Ci
+/gate/source/SourceCo6072/setActivity 3.725 Ci
 /gate/source/SourceCo6072/setType backtoback
 
 #====================
@@ -2547,7 +2547,7 @@
 #SOURCE 8 1173.228 keV
 #====================
 /gate/source/addSource SourceCo6081 gps
-/gate/source/SourceCo6081/setActivity 3.6946875 Ci
+/gate/source/SourceCo6081/setActivity 3.725 Ci
 /gate/source/SourceCo6081/setType backtoback
 
 #====================
@@ -2597,7 +2597,7 @@
 #SOURCE 8 1332.492 keV
 #====================
 /gate/source/addSource SourceCo6082 gps
-/gate/source/SourceCo6082/setActivity 3.6946875 Ci
+/gate/source/SourceCo6082/setActivity 3.725 Ci
 /gate/source/SourceCo6082/setType backtoback
 
 #====================
@@ -2647,7 +2647,7 @@
 #SOURCE 9 1173.228 keV
 #====================
 /gate/source/addSource SourceCo6091 gps
-/gate/source/SourceCo6091/setActivity 3.6946875 Ci
+/gate/source/SourceCo6091/setActivity 3.725 Ci
 /gate/source/SourceCo6091/setType backtoback
 
 #====================
@@ -2697,7 +2697,7 @@
 #SOURCE 9 1332.492 keV
 #====================
 /gate/source/addSource SourceCo6092 gps
-/gate/source/SourceCo6092/setActivity 3.6946875 Ci
+/gate/source/SourceCo6092/setActivity 3.725 Ci
 /gate/source/SourceCo6092/setType backtoback
 
 #====================
@@ -2747,7 +2747,7 @@
 #SOURCE 10 1173.228 keV
 #====================
 /gate/source/addSource SourceCo60101 gps
-/gate/source/SourceCo60101/setActivity 3.6946875 Ci
+/gate/source/SourceCo60101/setActivity 3.725 Ci
 /gate/source/SourceCo60101/setType backtoback
 
 #====================
@@ -2797,7 +2797,7 @@
 #SOURCE 10 1332.492 keV
 #====================
 /gate/source/addSource SourceCo60102 gps
-/gate/source/SourceCo60102/setActivity 3.6946875 Ci
+/gate/source/SourceCo60102/setActivity 3.725 Ci
 /gate/source/SourceCo60102/setType backtoback
 
 #====================
@@ -2847,7 +2847,7 @@
 #SOURCE 11 1173.228 keV
 #====================
 /gate/source/addSource SourceCo60111 gps
-/gate/source/SourceCo60111/setActivity 3.6946875 Ci
+/gate/source/SourceCo60111/setActivity 3.725 Ci
 /gate/source/SourceCo60111/setType backtoback
 
 #====================
@@ -2897,7 +2897,7 @@
 #SOURCE 11 1332.492 keV
 #====================
 /gate/source/addSource SourceCo60112 gps
-/gate/source/SourceCo60112/setActivity 3.6946875 Ci
+/gate/source/SourceCo60112/setActivity 3.725 Ci
 /gate/source/SourceCo60112/setType backtoback
 
 #====================
@@ -2947,7 +2947,7 @@
 #SOURCE 12 1173.228 keV
 #====================
 /gate/source/addSource SourceCo60121 gps
-/gate/source/SourceCo60121/setActivity 3.6946875 Ci
+/gate/source/SourceCo60121/setActivity 3.725 Ci
 /gate/source/SourceCo60121/setType backtoback
 
 #====================
@@ -2997,7 +2997,7 @@
 #SOURCE 12 1332.492 keV
 #====================
 /gate/source/addSource SourceCo60122 gps
-/gate/source/SourceCo60122/setActivity 3.6946875 Ci
+/gate/source/SourceCo60122/setActivity 3.725 Ci
 /gate/source/SourceCo60122/setType backtoback
 
 #====================
@@ -3047,7 +3047,7 @@
 #SOURCE 13 1173.228 keV
 #====================
 /gate/source/addSource SourceCo60131 gps
-/gate/source/SourceCo60131/setActivity 3.6946875 Ci
+/gate/source/SourceCo60131/setActivity 3.725 Ci
 /gate/source/SourceCo60131/setType backtoback
 
 #====================
@@ -3097,7 +3097,7 @@
 #SOURCE 13 1332.492 keV
 #====================
 /gate/source/addSource SourceCo60132 gps
-/gate/source/SourceCo60132/setActivity 3.6946875 Ci
+/gate/source/SourceCo60132/setActivity 3.725 Ci
 /gate/source/SourceCo60132/setType backtoback
 
 #====================
@@ -3147,7 +3147,7 @@
 #SOURCE 14 1173.228 keV
 #====================
 /gate/source/addSource SourceCo60141 gps
-/gate/source/SourceCo60141/setActivity 3.6946875 Ci
+/gate/source/SourceCo60141/setActivity 3.725 Ci
 /gate/source/SourceCo60141/setType backtoback
 
 #====================
@@ -3197,7 +3197,7 @@
 #SOURCE 14 1332.492 keV
 #====================
 /gate/source/addSource SourceCo60142 gps
-/gate/source/SourceCo60142/setActivity 3.6946875 Ci
+/gate/source/SourceCo60142/setActivity 3.725 Ci
 /gate/source/SourceCo60142/setType backtoback
 
 #====================
@@ -3247,7 +3247,7 @@
 #SOURCE 15 1173.228 keV
 #====================
 /gate/source/addSource SourceCo60151 gps
-/gate/source/SourceCo60151/setActivity 3.6946875 Ci
+/gate/source/SourceCo60151/setActivity 3.725 Ci
 /gate/source/SourceCo60151/setType backtoback
 
 #====================
@@ -3297,7 +3297,7 @@
 #SOURCE 15 1332.492 keV
 #====================
 /gate/source/addSource SourceCo60152 gps
-/gate/source/SourceCo60152/setActivity 3.6946875 Ci
+/gate/source/SourceCo60152/setActivity 3.725 Ci
 /gate/source/SourceCo60152/setType backtoback
 
 #====================
@@ -3347,7 +3347,7 @@
 #SOURCE 16 1173.228 keV
 #====================
 /gate/source/addSource SourceCo60161 gps
-/gate/source/SourceCo60161/setActivity 3.6946875 Ci
+/gate/source/SourceCo60161/setActivity 3.725 Ci
 /gate/source/SourceCo60161/setType backtoback
 
 #====================
@@ -3397,7 +3397,7 @@
 #SOURCE 16 1332.492 keV
 #====================
 /gate/source/addSource SourceCo60162 gps
-/gate/source/SourceCo60162/setActivity 3.6946875 Ci
+/gate/source/SourceCo60162/setActivity 3.725 Ci
 /gate/source/SourceCo60162/setType backtoback
 
 #====================
@@ -3626,9 +3626,9 @@
 #====================
 #TIME SLICE
 #====================
-/gate/application/setTimeSlice     1.  s
+/gate/application/setTimeSlice     10.  s
 /gate/application/setTimeStart     0.  s
-/gate/application/setTimeStop      60.  s
+/gate/application/setTimeStop      3600.  s
 
 #====================
 #SEED 
