@@ -14,12 +14,14 @@
 #SET MATERIALS
 #====================
 /gate/geometry/setMaterialDatabase GateMaterials.db
+
 #====================
 # WORLD
 #====================
 /gate/world/geometry/setXLength 100. cm
 /gate/world/geometry/setYLength 100. cm
 /gate/world/geometry/setZLength 100. cm
+
 #====================
 # SYSTEM - scanner
 #====================
@@ -32,6 +34,7 @@
 #/gate/scanner/placement/setRotationAxis 1 0 0
 #/gate/scanner/placement/setRotationAngle 270 deg
 #/gate/scanner/vis/forceWireframe
+
 #====================
 #FIRST LEVEL OF THE SYSTEM
 #====================
@@ -45,6 +48,7 @@
 #/gate/cylinder1/vis/setColor gray
 #/gate/cylinder1/vis/forceWireframe
 /gate/geometry/rebuild
+
 #====================
 #SECOND LEVEL OF THE SYSTEM
 #====================
@@ -58,6 +62,7 @@
 /gate/cylinder2/vis/setColor yellow
 /gate/cylinder2/vis/forceWireframe
 /gate/geometry/rebuild
+
 #====================
 #CRYSTAL
 #====================
@@ -71,43 +76,44 @@
 /gate/crystal/vis/setColor red
 /gate/crystal/vis/forceWireframe
 /gate/geometry/rebuild
+
 #====================
 #ATTACH VOLUMES TO A SYSTEM
 #====================
 /gate/systems/scanner/level1/attach cylinder1
 /gate/systems/scanner/level2/attach cylinder2
 /gate/systems/scanner/level3/attach crystal
+
 #====================
 #DEFINE A SENSITIVE DETECTOR
 #====================
 /gate/crystal/attachCrystalSD
 /gate/systems/scanner/describe
+
 #====================
 #PHYSICS PROCESSES
 #====================
-/gate/physics/addPhysicsList QGSP_BERT_EMV
-/gate/physics/addProcess PhotoElectric gamma
-/gate/physics/processes/PhotoElectric/setModel StandardModel
-/gate/physics/addProcess Compton gamma
-/gate/physics/processes/Compton/setModel StandardModel
-/gate/physics/addProcess RayleighScattering
-/gate/physics/processes/RayleighScattering/setModel PenelopeModel
+/gate/physics/addPhysicsList emstandard_opt3
 /gate/physics/addProcess RadioactiveDecay
 /gate/physics/processList Enabled 
 /gate/physics/processList Initialized
+
 #====================
 #INITIALIZE
 #====================
 /gate/run/initialize
+
 #====================
 #ADDER
 #====================
 /gate/digitizer/Singles/insert adder
+
 #====================
 #READOUT
 #====================
 /gate/digitizer/Singles/insert readout
 /gate/digitizer/Singles/readout/setDepth 1
+
 #====================
 #ENERGY BLURRING
 #====================
@@ -115,6 +121,7 @@
 /gate/digitizer/Singles/blurring/setResolution 0.015
 /gate/digitizer/Singles/blurring/setEnergyOfReference 1173.228 keV
 /gate/digitizer/Singles/blurring/setEnergyOfReference 1332.492 keV
+
 #====================
 #ENERGY WINDOW
 #====================
@@ -122,32 +129,34 @@
 /gate/digitizer/Singles/thresholder/setThreshold 0. keV
 /gate/digitizer/Singles/insert upholder
 /gate/digitizer/Singles/upholder/setUphold 2000. keV
-#====================
-#COINCIDENCE SORTER
-#====================
-#/gate/digitizer/Coincidences/setWindow 10. ns
+
 #====================
 #SOURCE 1 (1173.228 keV)
 #====================
 /gate/source/addSource calibrationSourceCo60_1173keV gps
 /gate/source/calibrationSourceCo60_1173keV/setActivity 422000. becquerel
 /gate/source/calibrationSourceCo60_1173keV/setType backtoback
+
 #====================
 #POSITION
 #====================
-/gate/source/calibrationSourceCo60_1173keV/gps/centre 0. 0. 12.64 cm
+/gate/source/calibrationSourceCo60_1173keV/gps/centre 0. 0. 11.1 cm
+
 #====================
 #PARTICLE
 #====================
 /gate/source/calibrationSourceCo60_1173keV/gps/particle gamma
+
 #====================
 #TYPE
 #====================
 /gate/source/calibrationSourceCo60_1173keV/gps/type Point
+
 #====================
 #SET ANGULAR DISTRIBUITION
 #====================
 /gate/source/calibrationSourceCo60_1173keV/gps/angtype iso
+
 #====================
 #SET MIN AND MAX EMISSION ANGLES
 #==================== 
@@ -156,37 +165,45 @@
 /gate/source/calibrationSourceCo60_1173keV/gps/minphi 0. deg
 /gate/source/calibrationSourceCo60_1173keV/gps/maxphi 360. deg
 /gate/source/list
+
 #====================
 #SET ENERGY DISTRIBUTION
 #====================
 /gate/source/calibrationSourceCo60_1173keV/gps/ene/type Mono
 /gate/source/calibrationSourceCo60_1173keV/gps/ene/mono 1173.228 keV
+
 #====================
 #VISUALIZATION SOURCE
 #==================== 
-/gate/source/calibrationSourceCo60_1173keV/visualize 1000000 green 20
+/gate/source/calibrationSourceCo60_1173keV/visualize 10000 green 20
+
 #====================
 #SOURCE 2 (1332.492 keV)
 #====================
 /gate/source/addSource calibrationSourceCo60_1332keV gps
 /gate/source/calibrationSourceCo60_1332keV/setActivity 422000. becquerel
 /gate/source/calibrationSourceCo60_1332keV/setType backtoback
+
 #====================
 #POSITION
 #====================
-/gate/source/calibrationSourceCo60_1332keV/gps/centre 0. 0. 12.64 cm
+/gate/source/calibrationSourceCo60_1332keV/gps/centre 0. 0. 11.1 cm
+
 #====================
 #PARTICLE
 #====================
 /gate/source/calibrationSourceCo60_1332keV/gps/particle gamma
+
 #====================
 #TYPE
 #====================
 /gate/source/calibrationSourceCo60_1332keV/gps/type Point
+
 #====================
 #SET ANGULAR DISTRIBUITION
 #====================
 /gate/source/calibrationSourceCo60_1332keV/gps/angtype iso
+
 #====================
 #SET MIN AND MAX EMISSION ANGLES
 #==================== 
@@ -195,15 +212,17 @@
 /gate/source/calibrationSourceCo60_1332keV/gps/minphi 0. deg
 /gate/source/calibrationSourceCo60_1332keV/gps/maxphi 360. deg
 /gate/source/list
+
 #====================
 #SET ENERGY DISTRIBUTION
 #====================
 /gate/source/calibrationSourceCo60_1332keV/gps/ene/type Mono
 /gate/source/calibrationSourceCo60_1332keV/gps/ene/mono 1332.492 keV
+
 #====================
 #VISUALIZATION SOURCE
 #==================== 
-/gate/source/calibrationSourceCo60_1332keV/visualize 1000000 green 20
+/gate/source/calibrationSourceCo60_1332keV/visualize 10000 green 20
 
 #====================
 #ASCII OUTPUT FORMAT
@@ -212,8 +231,7 @@
 /gate/output/ascii/setFileName testCo60
 /gate/output/ascii/setOutFileHitsFlag 0
 /gate/output/ascii/setOutFileSinglesFlag 1
-#/gate/output/ascii/setSingleMask 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0
-#/gate/output/ascii/setOutFileCoincidencesFlag 1
+
 #====================
 #ROOT OUTPUT FORMAT
 #====================
@@ -224,13 +242,14 @@
 #====================
 #START ACQUISITION
 #====================
-/gate/application/setTotalNumberOfPrimaries 490000
+#/gate/application/setTotalNumberOfPrimaries 490000
+
 #====================
 #TIME SLICE
 #====================
 /gate/application/setTimeSlice     1.  s
 /gate/application/setTimeStart     0.  s
-/gate/application/setTimeStop     60.  s
+/gate/application/setTimeStop     3600.  s
 
 #====================
 #SEED 
