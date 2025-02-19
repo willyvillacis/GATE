@@ -387,7 +387,8 @@
 #PHYSICS PROCESSES
 #====================
 /gate/physics/addPhysicsList emstandard_opt3
-/gate/physics/processList Enabled
+/gate/physics/addProcess RadioactiveDecay
+/gate/physics/processList Enabled 
 /gate/physics/processList Initialized
 
 #====================
@@ -416,7 +417,6 @@
 #Para VGATE9.3
 #/gate/digitizerMgr/aguafricke/SinglesDigitizer/Singles/insert readout
 #/gate/digitizerMgr/aguafricke/SinglesDigitizer/Singles/readout/setDepth 2
-
 
 #====================
 #ENERGY BLURRING #VGate 9.1
