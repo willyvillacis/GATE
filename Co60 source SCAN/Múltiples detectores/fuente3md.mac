@@ -1540,6 +1540,7 @@
 #PHYSICS PROCESSES
 #====================
 /gate/physics/addPhysicsList emstandard_opt3
+/gate/physics/addProcess RadioactiveDecay
 /gate/physics/processList Enabled 
 /gate/physics/processList Initialized
 
