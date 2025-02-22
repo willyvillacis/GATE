@@ -1,14 +1,15 @@
 #====================
 #VISUALIZATION
 #====================
-/vis/open OGLIQt
-/vis/viewer/reset
-/vis/viewer/set/viewpointThetaPhi 60 30
-/vis/viewer/zoom 4
-/vis/viewer/set/style surface
-/vis/drawVolume
-/vis/scene/add/axes
-/vis/scene/endOfEventAction accumulate -4
+#/vis/open OGLIQt
+#/vis/viewer/reset
+#/vis/viewer/set/viewpointThetaPhi 60 30
+#/vis/viewer/zoom 4
+#/vis/viewer/set/style surface
+#/vis/drawVolume
+#/vis/scene/add/axes
+#/vis/scene/endOfEventAction accumulate -4
+
 #====================
 #====================
 #SET MATERIALS
@@ -45,8 +46,8 @@
 /gate/cylinder1/geometry/setRmin 0. cm
 /gate/cylinder1/geometry/setHeight 12.64 cm
 /gate/cylinder1/setMaterial Aluminium
-/gate/cylinder1/vis/setColor gray
-/gate/cylinder1/vis/forceWireframe
+#/gate/cylinder1/vis/setColor gray
+#/gate/cylinder1/vis/forceWireframe
 /gate/geometry/rebuild
 
 #====================
@@ -59,8 +60,8 @@
 /gate/cylinder2/geometry/setRmin 0. cm
 /gate/cylinder2/geometry/setHeight 12.44 cm
 /gate/cylinder2/setMaterial Air
-/gate/cylinder2/vis/setColor yellow
-/gate/cylinder2/vis/forceWireframe
+#/gate/cylinder2/vis/setColor yellow
+#/gate/cylinder2/vis/forceWireframe
 /gate/geometry/rebuild
 
 #====================
@@ -73,8 +74,8 @@
 /gate/crystal/geometry/setRmin 0. cm
 /gate/crystal/geometry/setHeight 2.04 cm
 /gate/crystal/setMaterial Germanium
-/gate/crystal/vis/setColor red
-/gate/crystal/vis/forceWireframe
+#/gate/crystal/vis/setColor red
+#/gate/crystal/vis/forceWireframe
 /gate/geometry/rebuild
 
 #====================
@@ -88,15 +89,14 @@
 #DEFINE A SENSITIVE DETECTOR
 #====================
 /gate/crystal/attachCrystalSD
-/gate/systems/scanner/describe
 
 #====================
 #PHYSICS PROCESSES
 #====================
 /gate/physics/addPhysicsList emstandard_opt3
 /gate/physics/addProcess RadioactiveDecay
-/gate/physics/processList Enabled 
-/gate/physics/processList Initialized
+/gate/physics/processList Enabled    # Para diagnóstico
+/gate/physics/processList Initialized  # Para diagnóstico
 
 #====================
 #INITIALIZE
@@ -134,19 +134,17 @@
 #====================
 /gate/source/addSource calibrationSourceCs137 gps
 /gate/source/calibrationSourceCs137/setActivity 425000. becquerel
-/gate/source/calibrationSourceCs137/setType backtoback
+/gate/source/calibrationSourceCs137/setForcedUnstableFlag false
 
 #====================
-#POSITION
+#POSITION Sobre el scanner
 #====================
-/gate/source/calibrationSourceCs137/gps/centre 0. 0. 11.1 cm
+/gate/source/calibrationSourceCs137/gps/centre 0. 0. 10.1 cm
 
 #====================
 #PARTICLE
 #====================
 /gate/source/calibrationSourceCs137/gps/particle gamma
-/gate/source/calibrationSourceCs137/gps/ene/type Mono
-/gate/source/calibrationSourceCs137/gps/ene/mono 661.657 keV
 
 #====================
 #TYPE
@@ -159,13 +157,10 @@
 /gate/source/calibrationSourceCs137/gps/angtype iso
 
 #====================
-#SET MIN AND MAX EMISSION ANGLES
-#==================== 
-/gate/source/calibrationSourceCs137/gps/mintheta 0. deg
-/gate/source/calibrationSourceCs137/gps/maxtheta 180. deg
-/gate/source/calibrationSourceCs137/gps/minphi    0. deg
-/gate/source/calibrationSourceCs137/gps/maxphi 360. deg
-/gate/source/list
+#SET ENERGY DISTRIBUTION
+#====================
+/gate/source/calibrationSourceCs137/gps/ene/type Mono
+/gate/source/calibrationSourceCs137/gps/ene/mono 661.657 keV
 
 #====================
 #VISUALIZATION SOURCE
@@ -188,11 +183,6 @@
 /gate/output/root/setRootSinglesFlag 1
 
 #====================
-#START ACQUISITION
-#====================
-#/gate/application/setTotalNumberOfPrimaries 1700000
-
-#====================
 #TIME SLICE
 #====================
 /gate/application/setTimeSlice     1.  s
@@ -204,10 +194,9 @@
 #====================
 /gate/random/setEngineName MersenneTwister
 /gate/random/setEngineSeed default
-/gate/random/verbose 0
+/gate/random/verbose 1  # Para diagnóstico
 
 #====================
 #START ACQUISITION
 #====================
-/gate/application/startDAQ
-
+/gate/application/start
