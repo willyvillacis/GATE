@@ -11,10 +11,21 @@
 #/vis/scene/endOfEventAction accumulate -4
 
 #====================
+# DESHABILITAR VISUALIZACION
+#====================
+/vis/disable
+
+#====================
+# LOGS
+#====================
+/gate/output/verbose 2
+/gate/application/verbose 2
+/gate/random/verbose 2
+
 #====================
 #SET MATERIALS
 #====================
-/gate/geometry/setMaterialDatabase GateMaterials.db
+/gate/geometry/setMaterialDatabase /fuente2/GateMaterials.db
 
 #====================
 # WORLD
@@ -32,9 +43,6 @@
 /gate/scanner/geometry/setRmax 10. cm
 /gate/scanner/geometry/setRmin 0. cm
 /gate/scanner/geometry/setHeight 20. cm
-#/gate/scanner/placement/setRotationAxis 1 0 0
-#/gate/scanner/placement/setRotationAngle 270 deg
-#/gate/scanner/vis/forceWireframe
 
 #====================
 #FIRST LEVEL OF THE SYSTEM
@@ -48,7 +56,6 @@
 /gate/cylinder1/setMaterial Aluminium
 #/gate/cylinder1/vis/setColor gray
 #/gate/cylinder1/vis/forceWireframe
-/gate/geometry/rebuild
 
 #====================
 #SECOND LEVEL OF THE SYSTEM
@@ -62,7 +69,6 @@
 /gate/cylinder2/setMaterial Air
 #/gate/cylinder2/vis/setColor yellow
 #/gate/cylinder2/vis/forceWireframe
-/gate/geometry/rebuild
 
 #====================
 #CRYSTAL (HPGe detector)
@@ -76,7 +82,6 @@
 /gate/crystal/setMaterial Germanium
 #/gate/crystal/vis/setColor red
 #/gate/crystal/vis/forceWireframe
-/gate/geometry/rebuild
 
 #====================
 #ATTACH VOLUMES TO A SYSTEM
@@ -94,7 +99,7 @@
 #PHYSICS PROCESSES
 #====================
 /gate/physics/addPhysicsList emstandard_opt3
-/gate/physics/addProcess RadioactiveDecay
+#/gate/physics/addProcess RadioactiveDecay
 /gate/physics/processList Enabled 
 /gate/physics/processList Initialized
 
@@ -109,34 +114,57 @@
 #====================
 #ADDER
 #====================
-/gate/digitizer/Singles/insert adder
+#Para VGATE 9.1
+#/gate/digitizer/Singles/insert adder
+
+#Para VGATE9.3
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert adder
 
 #====================
 #READOUT
 #====================
-/gate/digitizer/Singles/insert readout
-/gate/digitizer/Singles/readout/setDepth 1
+#Para VGATE 9.1
+#/gate/digitizer/Singles/insert readout
+#/gate/digitizer/Singles/readout/setDepth 1 #Agrupa hits a nivel del "cylinder1" (level 1)
+
+#Para VGATE9.3
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert readout
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/readout/setDepth 1 #Agrupa hits a nivel del "cylinder1" (level 1)
 
 #====================
-#ENERGY BLURRING (se utiliza la energía promedio entre las dos energías 1173.228 y 1332.492 keV)
+#ENERGY BLURRING #VGate 9.1 (se utiliza la energia promedio entre las dos energias 1173.228 y 1332.492 keV)
 #====================
-/gate/digitizer/Singles/insert blurring
-/gate/digitizer/Singles/blurring/setResolution 0.015
-/gate/digitizer/Singles/blurring/setEnergyOfReference 1252.86 keV
+#/gate/digitizer/Singles/insert blurring
+#/gate/digitizer/Singles/blurring/setResolution 0.015
+#/gate/digitizer/Singles/blurring/setEnergyOfReference 1252.86 keV
 
 #====================
-#ENERGY WINDOW
+#ENERGY RESOLUTION #VGate 9.3 (Antes ENERGY BLURRING)(se utiliza la energia promedia entre las dos energias 1173.228 y 1332.492 keV)
 #====================
-/gate/digitizer/Singles/insert thresholder
-/gate/digitizer/Singles/thresholder/setThreshold 0. keV
-/gate/digitizer/Singles/insert upholder
-/gate/digitizer/Singles/upholder/setUphold 2000. keV
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert energyResolution
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyResolution/fwhm 0.015
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyResolution/energyOfReference 1252.86 keV
+
+#====================
+#ENERGY WINDOW #VGATE 9.1
+#====================
+#/gate/digitizer/Singles/insert thresholder
+#/gate/digitizer/Singles/thresholder/setThreshold 0. keV
+#/gate/digitizer/Singles/insert upholder
+#/gate/digitizer/Singles/upholder/setUphold 2000. keV
+
+#====================
+#ENERGY FRAMING #VGATE 9.3 (Previously Thresholder and Upholder)
+#====================
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert energyFraming
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyFraming/setMin 0. keV
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyFraming/setMax 2000. keV
 
 #====================
 #SOURCE (Co60 con espectro discreto desde archivo)
 #====================
 /gate/source/addSource calibrationSourceCo60 gps
-/gate/source/calibrationSourceCo60/setActivity 422000. becquerel
+/gate/source/calibrationSourceCo60/setActivity 1488.06 becquerel
 /gate/source/calibrationSourceCo60/setForcedUnstableFlag false
 
 #====================
@@ -163,44 +191,39 @@
 #SET ENERGY DISTRIBUTION
 #====================
 /gate/source/calibrationSourceCo60/gps/energytype UserSpectrum
-/gate/source/calibrationSourceCo60/gps/setSpectrumFile DiscreteSpectrumCo60.txt
+/gate/source/calibrationSourceCo60/gps/setSpectrumFile /fuente2/DiscreteSpectrumCo60.txt
 
 #====================
 #VISUALIZATION SOURCE
 #==================== 
-/gate/source/calibrationSourceCo60_1173keV/visualize 10000 green 20
-
-#====================
-#ASCII OUTPUT FORMAT
-#====================
-/gate/output/ascii/enable
-/gate/output/ascii/setFileName testCo60
-/gate/output/ascii/setOutFileHitsFlag 0
-/gate/output/ascii/setOutFileSinglesFlag 1
+#/gate/source/calibrationSourceCo60_1173keV/visualize 10000 green 20
 
 #====================
 #ROOT OUTPUT FORMAT
 #====================
 /gate/output/root/enable
-/gate/output/root/setFileName testCo60
+/gate/output/root/setFileName /fuente2/output/testCo60
 /gate/output/root/setRootSinglesFlag 1
+
 
 #====================
 #TIME SLICE
 #====================
-/gate/application/setTimeSlice     10.  s
-/gate/application/setTimeStart     0.  s
-/gate/application/setTimeStop     3600.  s
+/gate/application/setTimeSlice     225. s    
+/gate/application/setTimeStart     0. s
+/gate/application/setTimeStop     3600. s
 
 #====================
 #SEED 
 #====================
 /gate/random/setEngineName MersenneTwister
-/gate/random/setEngineSeed default
+/gate/random/setEngineSeed auto
 /gate/random/verbose 1
 
+
 #====================
-#START ACQUISITION
+# START ACQUISITION FOR CLUSTER
 #====================
-/gate/application/start
+/gate/application/startDAQCluster 0 3600 0 s
+
 
