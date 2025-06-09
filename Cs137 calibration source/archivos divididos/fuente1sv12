@@ -1,0 +1,75 @@
+/vis/disable
+/gate/output/verbose 2
+/gate/application/verbose 2
+/gate/random/verbose 2
+/gate/geometry/setMaterialDatabase /fuente1/GateMaterials.db
+/gate/world/geometry/setXLength 100. cm
+/gate/world/geometry/setYLength 100. cm
+/gate/world/geometry/setZLength 100. cm
+/gate/world/daughters/name scanner
+/gate/world/daughters/insert cylinder
+/gate/scanner/setMaterial Air
+/gate/scanner/geometry/setRmax 10. cm
+/gate/scanner/geometry/setRmin 0. cm
+/gate/scanner/geometry/setHeight 20. cm
+/gate/scanner/daughters/name cylinder1
+/gate/scanner/daughters/insert cylinder
+/gate/cylinder1/placement/setTranslation 0. 0. 0. cm
+/gate/cylinder1/geometry/setRmax 7.8 cm
+/gate/cylinder1/geometry/setRmin 0. cm
+/gate/cylinder1/geometry/setHeight 12.64 cm
+/gate/cylinder1/setMaterial Aluminium
+/gate/cylinder1/daughters/name cylinder2
+/gate/cylinder1/daughters/insert cylinder
+/gate/cylinder2/placement/setTranslation 0. 0. 0. cm
+/gate/cylinder2/geometry/setRmax 7.2 cm
+/gate/cylinder2/geometry/setRmin 0. cm
+/gate/cylinder2/geometry/setHeight 12.44 cm
+/gate/cylinder2/setMaterial Air
+/gate/cylinder2/daughters/name crystal
+/gate/cylinder2/daughters/insert cylinder
+/gate/crystal/placement/setTranslation 0. 0. 4.18 cm
+/gate/crystal/geometry/setRmax 5.05 cm
+/gate/crystal/geometry/setRmin 0. cm
+/gate/crystal/geometry/setHeight 2.04 cm
+/gate/crystal/setMaterial Germanium
+/gate/systems/scanner/level1/attach cylinder1
+/gate/systems/scanner/level2/attach cylinder2
+/gate/systems/scanner/level3/attach crystal
+/gate/crystal/attachCrystalSD
+/gate/systems/scanner/describe
+/gate/physics/addPhysicsList emstandard_opt3
+/gate/physics/addProcess RadioactiveDecay
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+/gate/run/initialize
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert adder
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert readout
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/readout/setDepth 1
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert energyResolution
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyResolution/fwhm 0.015
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyResolution/energyOfReference 661.657 keV
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert energyFraming
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyFraming/setMin 0. keV
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyFraming/setMax 2000. keV
+/gate/source/addSource calibrationSourceCs137 gps
+/gate/source/calibrationSourceCs137/setActivity 390720. becquerel
+/gate/source/calibrationSourceCs137/setForcedUnstableFlag false
+/gate/source/calibrationSourceCs137/gps/centre 0. 0. 10.1 cm
+/gate/source/calibrationSourceCs137/gps/particle gamma
+/gate/source/calibrationSourceCs137/gps/type Point
+/gate/source/calibrationSourceCs137/gps/angtype iso
+/gate/source/calibrationSourceCs137/gps/ene/type Mono
+/gate/source/calibrationSourceCs137/gps/ene/mono 661.657 keV
+
+/gate/output/root/setFileName /fuente1/output/testCs137_12
+/gate/output/root/setRootSinglesFlag 1
+/gate/application/setTimeSlice 37.5 s
+/gate/application/setTimeStart 412.5 s
+/gate/application/setTimeStop 450. s
+/gate/random/setEngineName MersenneTwister
+
+/gate/random/verbose 1
+/gate/random/setEngineSeed 3693797654769538288
+/gate/output/root/enable
+/gate/application/startDAQCluster 412.5 450 0 s
