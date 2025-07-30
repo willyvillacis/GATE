@@ -1,0 +1,795 @@
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 4126455
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 500000
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 4126455
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+==================================================
+INICIO DE SIMULACIÓN: Fri May  9 03:02:16 UTC 2025
+Configuración del entorno:
+OMP_NUM_THREADS=4
+G4FORCENUMBEROFTHREADS=4
+G4MULTITHREADED=1
+Información del sistema:
+Thread(s) per core:              2
+Core(s) per socket:              64
+Socket(s):                       2
+Model name:                      AMD EPYC 7742 64-Core Processor
+==================================================
+Iniciando simulación con 4 núcleos...
+[G4] 
+[G4] **************************************************************
+[G4]  Geant4 version Name: geant4-11-01 [MT]   (9-December-2022)
+[G4]                        Copyright : Geant4 Collaboration
+[G4]                       References : NIM A 506 (2003), 250-303
+[G4]                                  : IEEE-TNS 53 (2006), 270-278
+[G4]                                  : NIM A 835 (2016), 186-225
+[G4]                              WWW : http://geant4.org/
+[G4] **************************************************************
+[G4] 
+[Core-0] Initialization of geometry
+[Core-0] Initialization of physics
+[Core-0] Initialization of actors
+[Core-0] 
+[Core-0] *******************************************************
+[Core-0]  GATE version 9.3 (2023)
+[Core-0]  Copyright : OpenGATE Collaboration
+[Core-0]  Reference : Phys. Med. Biol. 49(19) 4543-4561     2004 
+[Core-0]  Reference : Phys. Med. Biol. 56(4)  881-901       2011 
+[Core-0]  Reference : Med. Phys.       41(6)  1-14          2014
+[Core-0]  Reference : Phys. Med. Biol. 66(10) 1-23          2021
+[Core-0]  http://www.opengatecollaboration.org 
+[Core-0] *******************************************************
+[Core-0] 
+[Core-0] You are using Geant4 version 11.1.0
+[Core-0] Starting macro /fuente3/undetector/fuente3dsvp.mac
+I/O warning : failed to load external entity "./Materials.xml"
+I/O warning : failed to load external entity "./Materials.xml"
+I/O warning : failed to load external entity "./Materials.xml"
+I/O warning : failed to load external entity "./Materials.xml"
+I/O warning : failed to load external entity "./Materials.xml"
+I/O warning : failed to load external entity "./Materials.xml"
+I/O warning : failed to load external entity "./Materials.xml"
+I/O warning : failed to load external entity "./Materials.xml"
+I/O warning: Discard the previous warning if your simulation doesn't transport OPTICAL PHOTONS. 
+Otherwise, please copy the ./Materials.xml file from the gate-source directory in the directory where you run your main macro.
+I/O warning: Discard the previous warning if your simulation doesn't transport OPTICAL PHOTONS. 
+Otherwise, please copy the ./Materials.xml file from the gate-source directory in the directory where you run your main macro.
+I/O warning: Discard the previous warning if your simulation doesn't transport OPTICAL PHOTONS. 
+Otherwise, please copy the ./Materials.xml file from the gate-source directory in the directory where you run your main macro.
+I/O warning: Discard the previous warning if your simulation doesn't transport OPTICAL PHOTONS. 
+Otherwise, please copy the ./Materials.xml file from the gate-source directory in the directory where you run your main macro.
+I/O warning: Discard the previous warning if your simulation doesn't transport OPTICAL PHOTONS. 
+Otherwise, please copy the ./Materials.xml file from the gate-source directory in the directory where you run your main macro.
+I/O warning: Discard the previous warning if your simulation doesn't transport OPTICAL PHOTONS. 
+Otherwise, please copy the ./Materials.xml file from the gate-source directory in the directory where you run your main macro.
+I/O warning: Discard the previous warning if your simulation doesn't transport OPTICAL PHOTONS. 
+Otherwise, please copy the ./Materials.xml file from the gate-source directory in the directory where you run your main macro.
+I/O warning: Discard the previous warning if your simulation doesn't transport OPTICAL PHOTONS. 
+Otherwise, please copy the ./Materials.xml file from the gate-source directory in the directory where you run your main macro.
+[Physic-0] The following Geant4's physic-list is enabled :emstandard_opt3
+
+
+List of Enabled processes:
+
+
+
+
+List of initialized processes:
+
+  * GenericIon
+    - msc
+    - ionIoni
+    - nuclearStopping
+  * He3
+    - msc
+    - ionIoni
+    - nuclearStopping
+  * alpha
+    - msc
+    - ionIoni
+    - nuclearStopping
+  * anti_He3
+    - msc
+    - hIoni
+  * anti_alpha
+    - msc
+    - hIoni
+  * anti_deuteron
+    - msc
+    - hIoni
+  * anti_omega-
+    - msc
+    - hIoni
+  * anti_proton
+    - msc
+    - hIoni
+    - hBrems
+    - hPairProd
+  * anti_sigma+
+    - msc
+    - hIoni
+  * anti_sigma-
+    - msc
+    - hIoni
+  * anti_triton
+    - msc
+    - hIoni
+  * anti_xi-
+    - msc
+    - hIoni
+  * deuteron
+    - msc
+    - hIoni
+  * e+
+    - msc
+    - eIoni
+    - eBrem
+    - ePairProd
+    - annihil
+  * e-
+    - msc
+    - eIoni
+    - eBrem
+    - ePairProd
+  * gamma
+    - GammaGeneralProc
+  * kaon+
+    - msc
+    - hIoni
+    - hBrems
+    - hPairProd
+  * kaon-
+    - msc
+    - hIoni
+    - hBrems
+    - hPairProd
+  * mu+
+    - msc
+    - muIoni
+    - muBrems
+    - muPairProd
+  * mu-
+    - msc
+    - muIoni
+    - muBrems
+    - muPairProd
+  * omega-
+    - msc
+    - hIoni
+  * pi+
+    - msc
+    - hIoni
+    - hBrems
+    - hPairProd
+  * pi-
+    - msc
+    - hIoni
+    - hBrems
+    - hPairProd
+  * proton
+    - msc
+    - hIoni
+    - hBrems
+    - hPairProd
+    - nuclearStopping
+  * sigma+
+    - msc
+    - hIoni
+  * sigma-
+    - msc
+    - hIoni
+  * tau+
+    - msc
+    - hIoni
+  * tau-
+    - msc
+    - hIoni
+  * triton
+    - msc
+    - hIoni
+  * xi-
+    - msc
+    - hIoni
+
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+[Core-0] Initialization of geometry
+[Core-0] Initialization of physics
+[Core-0] Initialization of actors
+Time Start set to (s) 0
+Time Stop set to (s) 0.00042
+[Acquisition-0]   
+[Acquisition-0] ============= Source initialization =============
+[Acquisition-0]   
+[Acquisition-0] ============= Acquisition starts! =============
+[Acquisition-0] Simulation start time = 0 sec
+[Acquisition-0] Simulation end time   = 0.00042 sec
+[Acquisition-0] Simulation will have  = 1 run(s)
+[Acquisition-0] Slice 0 from 0 to 0.00042 s [slice=0.00042 s]
+=======================================================================
+======                 Electromagnetic Physics Parameters      ========
+=======================================================================
+LPM effect enabled                                 1
+Enable creation and use of sampling tables         0
+Apply cuts on all EM processes                     1
+Use combined TransportationWithMsc                 Disabled
+Use general process                                1
+Enable linear polarisation for gamma               0
+Enable photoeffect sampling below K-shell          1
+Enable sampling of quantum entanglement            0
+X-section factor for integral approach             0.8
+Min kinetic energy for tables                      1 keV
+Max kinetic energy for tables                      3 GeV
+Number of bins per decade of a table               20
+Verbose level                                      1
+Verbose level for worker thread                    0
+Bremsstrahlung energy threshold above which 
+  primary e+- is added to the list of secondary    100 TeV
+Bremsstrahlung energy threshold above which primary
+  muon/hadron is added to the list of secondary    100 TeV
+Lowest triplet kinetic energy                      1 MeV
+Enable sampling of gamma linear polarisation       0
+5D gamma conversion model type                     0
+5D gamma conversion model on isolated ion          0
+Livermore data directory                           epics_2017
+=======================================================================
+======                 Ionisation Parameters                   ========
+=======================================================================
+Step function for e+-                              (0.2, 0.1 mm)
+Step function for muons/hadrons                    (0.2, 0.05 mm)
+Step function for light ions                       (0.1, 0.02 mm)
+Step function for general ions                     (0.1, 0.001 mm)
+Lowest e+e- kinetic energy                         100 eV 
+Lowest muon/hadron kinetic energy                  1 keV
+Use ICRU90 data                                    1
+Fluctuations of dE/dx are enabled                  1
+Type of fluctuation model for leptons and hadrons  Urban
+Use built-in Birks satuaration                     0
+Build CSDA range enabled                           0
+Use cut as a final range enabled                   0
+Enable angular generator interface                 1
+Max kinetic energy for CSDA tables                 1 GeV
+Max kinetic energy for NIEL computation            1 MeV
+Linear loss limit                                  0.01
+Read data from file for e+e- pair production by mu 0
+=======================================================================
+======                 Multiple Scattering Parameters          ========
+=======================================================================
+Type of msc step limit algorithm for e+-           2
+Type of msc step limit algorithm for muons/hadrons 0
+Msc lateral displacement for e+- enabled           1
+Msc lateral displacement for muons and hadrons     1
+Urban msc model lateral displacement alg96         1
+Range factor for msc step limit for e+-            0.03
+Range factor for msc step limit for muons/hadrons  0.2
+Geometry factor for msc step limitation of e+-     2.5
+Safety factor for msc step limit for e+-           0.6
+Skin parameter for msc step limitation of e+-      1
+Lambda limit for msc step limit for e+-            1 mm
+Use Mott correction for e- scattering              1
+Factor used for dynamic computation of angular 
+  limit between single and multiple scattering     1
+Fixed angular limit between single 
+  and multiple scattering                          3.1416 rad
+Upper energy limit for e+- multiple scattering     100 MeV
+Type of electron single scattering model           0
+Type of nuclear form-factor                        1
+Screening factor                                   1
+=======================================================================
+======                 Atomic Deexcitation Parameters          ========
+=======================================================================
+Fluorescence enabled                               1
+Directory in G4LEDATA for fluorescence data files  fluor
+Auger electron cascade enabled                     1
+PIXE atomic de-excitation enabled                  1
+De-excitation module ignores cuts                  0
+Type of PIXE cross section for hadrons             Empirical
+Type of PIXE cross section for e+-                 Livermore
+=======================================================================
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 17 regions:
+          DefaultRegionForTheWorld  1  1  1
+          portamuestra  1  1  1
+          contenedormuestra  1  1  1
+          tapa_sup_contenedor  1  1  1
+          tapa_inf_contenedor  1  1  1
+          soportetubos  1  1  1
+          agujero_central  1  1  1
+          agujero_interno  1  1  1
+          agujero_externo  1  1  1
+          soportemadera1  1  1  1
+          soportemadera2  1  1  1
+          tapa_inferior  1  1  1
+          tapa_superior  1  1  1
+          lapiz_co60  1  1  1
+          tapa  1  1  1
+          tubo  1  1  1
+          aguafricke  1  1  1
+
+### === G4UAtomicDeexcitation::InitialiseForNewRun()
+### ===  Auger flag: 1
+### ===  Ignore cuts flag:   0
+### ===  PIXE model for hadrons: Empirical
+### ===  PIXE model for e+-:     Livermore
+
+phot:  for gamma applyCuts:1  SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 3 GeV in 77 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=    3 GeV  SauterGavrila Fluo
+
+compt:  for gamma applyCuts:1  SubType=13 BuildTable=1
+      Lambda table from 1 keV to 1 MeV, 19 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 3 GeV in 64 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        KleinNishina : Emin=    0 eV  Emax=    3 GeV Fluo
+
+conv:  for gamma applyCuts:1  SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 3 GeV, 34 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+     BetheHeitlerLPM : Emin=    0 eV  Emax=    3 GeV  ModifiedTsai
+
+Rayl:  for gamma applyCuts:1  SubType=11 BuildTable=1
+      Lambda table from 1 keV to 150 keV, 18 bins/decade, spline: 0
+      LambdaPrime table from 150 keV to 3 GeV in 80 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=    3 GeV  CullenGenerator
+
+msc:  for e-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV Nbins=120   1 keV -   3 GeV
+          StepLim=SafetyPlus Rfact=0.03 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+eIoni:  for e-  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 3, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=    3 GeV  deltaVI
+
+eBrem:  for e-  XStype:4  SubType=3
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  AngularGen2BS
+            eBremLPM : Emin=    1 GeV Emax=    3 GeV  AngularGen2BS
+
+ePairProd:  for e-  XStype:1  SubType=4
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      Sampling table 6x1001; from 0.1 GeV to 0.003 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           ePairProd : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV Nbins=120   1 keV -   3 GeV
+          StepLim=SafetyPlus Rfact=0.03 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+eIoni:  for e+  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 3, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=    3 GeV  deltaVI
+
+eBrem:  for e+  XStype:4  SubType=3
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  AngularGen2BS
+            eBremLPM : Emin=    1 GeV Emax=    3 GeV  AngularGen2BS
+
+ePairProd:  for e+  XStype:1  SubType=4
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      Sampling table 6x1001; from 0.1 GeV to 0.003 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           ePairProd : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+
+annihil:  for e+ XStype:2 applyCuts:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=    3 GeV
+
+msc:  for proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV Nbins=120   1 keV -   3 GeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+hIoni:  for proton  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 3, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=    2 MeV  deltaVI
+          BetheBloch : Emin=    2 MeV Emax=    3 GeV  deltaVI
+
+hBrems:  for proton  XStype:1  SubType=3
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for proton  XStype:1  SubType=4
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+
+nuclearStopping:  for proton applyCuts:1  SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for GenericIon  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+ionIoni:  for GenericIon  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.001 mm), integ: 3, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+    LindhardSorensen : Emin=    0 eV  Emax=    3 GeV  deltaVI
+
+nuclearStopping:  for GenericIon applyCuts:1  SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for alpha  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+ionIoni:  for alpha  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 3, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon : Emin=    0 eV  Emax=7.9452 MeV  deltaVI
+          BetheBloch : Emin=7.9452 MeV Emax=    3 GeV  deltaVI
+
+nuclearStopping:  for alpha applyCuts:1  SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for anti_proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV Nbins=120   1 keV -   3 GeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+hIoni:  for anti_proton  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 3, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=    2 MeV  deltaVI
+          BetheBloch : Emin=    2 MeV Emax=    3 GeV  deltaVI
+
+hBrems:  for anti_proton  XStype:1  SubType=3
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for anti_proton  XStype:1  SubType=4
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+
+msc:  for kaon+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV Nbins=120   1 keV -   3 GeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+hIoni:  for kaon+  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 3, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=1.05231 MeV  deltaVI
+          BetheBloch : Emin=1.05231 MeV Emax=    3 GeV  deltaVI
+
+hBrems:  for kaon+  XStype:1  SubType=3
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for kaon+  XStype:1  SubType=4
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+
+msc:  for kaon-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV Nbins=120   1 keV -   3 GeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+hIoni:  for kaon-  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 3, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=1.05231 MeV  deltaVI
+          BetheBloch : Emin=1.05231 MeV Emax=    3 GeV  deltaVI
+
+hBrems:  for kaon-  XStype:1  SubType=3
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for kaon-  XStype:1  SubType=4
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+
+msc:  for mu+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV Nbins=120   1 keV -   3 GeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+muIoni:  for mu+  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 3, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=  200 keV  deltaVI
+        MuBetheBloch : Emin=  200 keV Emax=    3 GeV
+
+muBrems:  for mu+  XStype:1  SubType=3
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+muPairProd:  for mu+  XStype:1  SubType=4
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      Sampling table 4x1001; from 0.85 GeV to 0.003 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+
+msc:  for mu-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV Nbins=120   1 keV -   3 GeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+muIoni:  for mu-  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 3, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=  200 keV  deltaVI
+        MuBetheBloch : Emin=  200 keV Emax=    3 GeV
+
+muBrems:  for mu-  XStype:1  SubType=3
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+muPairProd:  for mu-  XStype:1  SubType=4
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      Sampling table 4x1001; from 0.85 GeV to 0.003 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+
+msc:  for pi+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV Nbins=120   1 keV -   3 GeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+hIoni:  for pi+  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 3, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=297.505 keV  deltaVI
+          BetheBloch : Emin=297.505 keV Emax=    3 GeV  deltaVI
+
+hBrems:  for pi+  XStype:1  SubType=3
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for pi+  XStype:1  SubType=4
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      Sampling table 4x1001; from 1.11656 GeV to 0.003 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+
+msc:  for pi-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=    3 GeV Nbins=120   1 keV -   3 GeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+hIoni:  for pi-  XStype:3  SubType=2
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 3, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=297.505 keV  deltaVI
+          BetheBloch : Emin=297.505 keV Emax=    3 GeV  deltaVI
+
+hBrems:  for pi-  XStype:1  SubType=3
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for pi-  XStype:1  SubType=4
+      dE/dx and range tables from 1 keV to 3 GeV in 120 bins
+      Lambda tables from threshold to 3 GeV, 20 bins/decade, spline: 0
+      Sampling table 4x1001; from 1.11656 GeV to 0.003 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=    3 GeV  ModifiedMephi
+G4VisManager: Using G4TrajectoryDrawByCharge as fallback trajectory model.
+See commands in /vis/modeling/trajectories/ for other options.
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 17 regions:
+          DefaultRegionForTheWorld  1  1  1
+          portamuestra  1  1  1
+          contenedormuestra  1  1  1
+          tapa_sup_contenedor  1  1  1
+          tapa_inf_contenedor  1  1  1
+          soportetubos  1  1  1
+          agujero_central  1  1  1
+          agujero_interno  1  1  1
+          agujero_externo  1  1  1
+          soportemadera1  1  1  1
+          soportemadera2  1  1  1
+          tapa_inferior  1  1  1
+          tapa_superior  1  1  1
+          lapiz_co60  1  1  1
+          tapa  1  1  1
+          tubo  1  1  1
+          aguafricke  1  1  1
+
+### === G4UAtomicDeexcitation::InitialiseForNewRun()
+### ===  Auger flag: 1
+### ===  Ignore cuts flag:   0
+### ===  PIXE model for hadrons: Empirical
+### ===  PIXE model for e+-:     Livermore
+[Core-0] End of macro /fuente3/undetector/fuente3dsvp.mac
+GateOutputMgr deleting...
+Graphics systems deleted.
+Visualization Manager deleting...
+Simulación completada correctamente en 24552 segundos.
