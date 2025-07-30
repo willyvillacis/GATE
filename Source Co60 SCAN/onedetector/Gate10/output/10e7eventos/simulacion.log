@@ -1,0 +1,37 @@
+Verificacion final de la simulacion:
+- Volumenes definidos: 13
+- Fuentes activas: 16
+- Actores registrados: 1
+
+Iniciando simulacion...
+[32mSimulation: create MTRunManager with 4 threads[0m
+[32mSimulation: initialize Geometry[0m
+[32mSimulation: initialize Physics[0m
+[32mSimulation: initialize Source[0m
+[32mSimulation: initialize G4RunManager[0m
+[32mSimulation: initialize PhysicsEngine after RunManager initialization[0m
+[33mWARNING [0m[33mSetEnergyRange only works in MT mode[0m
+[32mSimulation: initialize actors[0m
+[32mSimulation: (no volumes overlap checking)[0m
+[32m--------------------------------------------------------------------------------
+Simulation: START [0m
+[32mSimulation: STOP. Run: 1. Time: 1116.5 seconds.
+--------------------------------------------------------------------------------[0m
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+********************
+2 warnings occurred in this simulation: 
+
+1) ----------
+SetEnergyRange only works in MT mode
+
+2) ----------
+SetEnergyRange only works in MT mode
+
+********************
+Simulacion finalizada.
+
+Resumen de la simulacion:
+- Eventos simulados: 1e7
