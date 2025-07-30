@@ -1,0 +1,43 @@
+==================================================
+INICIO DE SIMULACIÓN: Sun Jul 27 13:22:43 UTC 2025
+Ejecutando script: fuente3mdsvp.py
+==================================================
+Verificacion final de la simulacion:
+- Volumenes definidos: 67
+- Fuentes activas: 16
+- Actores registrados: 19
+
+Iniciando simulacion...
+[32mSimulation: create MTRunManager with 1 threads[0m
+[32mSimulation: initialize Geometry[0m
+[32mSimulation: initialize Physics[0m
+[32mSimulation: initialize Source[0m
+[32mSimulation: initialize G4RunManager[0m
+[32mSimulation: initialize PhysicsEngine after RunManager initialization[0m
+[33mWARNING [0m[33mSetEnergyRange only works in MT mode[0m
+[32mSimulation: initialize actors[0m
+[32mSimulation: (no volumes overlap checking)[0m
+[32m--------------------------------------------------------------------------------
+Simulation: START [0m
+[32mSimulation: STOP. Run: 1. Time: 26323.1 seconds.
+--------------------------------------------------------------------------------[0m
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+********************
+2 warnings occurred in this simulation: 
+
+1) ----------
+SetEnergyRange only works in MT mode
+
+2) ----------
+SetEnergyRange only works in MT mode
+
+********************
+Simulacion finalizada.
+
+Resumen de la simulacion:
+- Actividad total: 1e9 Bq
+- Tiempo simulado: 1 s
+==================================================
+FIN DE SIMULACIÓN: Sun Jul 27 20:41:37 UTC 2025
+Tiempo total de ejecución real: 26334 segundos
+==================================================
