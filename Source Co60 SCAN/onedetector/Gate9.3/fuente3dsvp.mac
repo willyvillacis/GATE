@@ -1,0 +1,602 @@
+#====================
+#VISUALIZATION
+#====================
+#/vis/open OGLIQt
+#/vis/viewer/reset
+#/vis/viewer/set/viewpointThetaPhi 60 30
+#/vis/viewer/zoom 3
+#/vis/viewer/set/style surface
+#/vis/drawVolume
+#/vis/scene/add/axes
+#/vis/scene/endOfEventAction accumulate -4
+
+
+#====================
+# DESHABILITAR VISUALIZACION
+#====================
+/vis/disable
+
+#====================
+# LOGS
+#====================
+/gate/output/verbose 1
+/gate/application/verbose 1
+/gate/random/verbose 1
+
+#====================
+#SET MATERIALS
+#====================
+/gate/geometry/setMaterialDatabase /fuente3/undetector/GateMaterials.db
+
+#====================
+# WORLD
+#====================
+/gate/world/geometry/setXLength 200. mm
+/gate/world/geometry/setYLength 250. mm
+/gate/world/geometry/setZLength 200. mm
+
+
+#========================
+# PORTAMUESTRA optimizado (cuerpo + tapa incluidos)
+#========================
+/gate/world/daughters/name portamuestra
+/gate/world/daughters/insert cylinder
+/gate/portamuestra/setMaterial Aluminium
+/gate/portamuestra/geometry/setRmax 74. mm
+/gate/portamuestra/geometry/setRmin 73.5 mm  # pared m s gruesa
+/gate/portamuestra/geometry/setHeight 200. mm  # incluye la tapa
+/gate/portamuestra/placement/setRotationAxis 1 0 0
+/gate/portamuestra/placement/setRotationAngle 90 deg
+/gate/portamuestra/vis/setColor white
+/gate/portamuestra/vis/forceWireframe
+
+#====================
+# CONTENEDOR DE MUESTRA 
+#====================
+/gate/world/daughters/name contenedormuestra
+/gate/world/daughters/insert cylinder
+/gate/contenedormuestra/setMaterial PVC
+/gate/contenedormuestra/geometry/setRmax 50.97 mm
+/gate/contenedormuestra/geometry/setRmin 50.47 mm
+/gate/contenedormuestra/geometry/setHeight 129.5 mm 
+/gate/contenedormuestra/placement/setRotationAxis 1 0 0
+/gate/contenedormuestra/placement/setRotationAngle 90 deg
+/gate/contenedormuestra/placement/setTranslation 0. 0. 0. mm
+/gate/contenedormuestra/vis/setColor cyan
+/gate/contenedormuestra/vis/forceWireframe
+
+#====================
+# TAPA CONTENEDORMUESTRA (Parte superior) 
+#====================
+/gate/world/daughters/name tapa_sup_contenedor
+/gate/world/daughters/insert cylinder
+/gate/tapa_sup_contenedor/setMaterial PVC
+/gate/tapa_sup_contenedor/geometry/setRmax 50.97 mm
+/gate/tapa_sup_contenedor/geometry/setRmin 0. mm
+/gate/tapa_sup_contenedor/geometry/setHeight 2. mm
+/gate/tapa_sup_contenedor/placement/setRotationAxis 1 0 0
+/gate/tapa_sup_contenedor/placement/setRotationAngle 90 deg
+/gate/tapa_sup_contenedor/placement/setTranslation 0. 65.75 0. mm 
+/gate/tapa_sup_contenedor/vis/setColor cyan
+/gate/tapa_sup_contenedor/vis/forceWireframe
+
+
+#====================
+# TAPA CONTENEDORMUESTRA (Parte inferior)
+#====================
+/gate/world/daughters/name tapa_inf_contenedor
+/gate/world/daughters/insert cylinder
+/gate/tapa_inf_contenedor/setMaterial PVC
+/gate/tapa_inf_contenedor/geometry/setRmax 50.97 mm
+/gate/tapa_inf_contenedor/geometry/setRmin 0. mm
+/gate/tapa_inf_contenedor/geometry/setHeight 2. mm
+/gate/tapa_inf_contenedor/placement/setRotationAxis 1 0 0
+/gate/tapa_inf_contenedor/placement/setRotationAngle 90 deg
+/gate/tapa_inf_contenedor/placement/setTranslation 0. -65.75 0. mm #ajusta si el contenedor tiene 129.5 mm de alto
+/gate/tapa_inf_contenedor/vis/setColor cyan
+/gate/tapa_inf_contenedor/vis/forceWireframe
+
+
+#====================
+# SOPORTE PRINCIPAL CON AGUJEROS (versi n optimizada)
+#====================
+# Soporte principal (usando subtractive geometry para los agujeros)
+#/gate/world/daughters/name soportetubos
+#/gate/world/daughters/insert cylinder
+#/gate/soportetubos/setMaterial Polypropilene
+#/gate/soportetubos/geometry/setRmax 50.465 mm
+#/gate/soportetubos/geometry/setRmin 0. mm
+#/gate/soportetubos/geometry/setHeight 25.2 mm
+#/gate/soportetubos/placement/setRotationAxis 1 0 0
+#/gate/soportetubos/placement/setRotationAngle 90 deg
+#/gate/soportetubos/placement/setTranslation 0. 0. 0. mm #  nica posici n definida
+#/gate/soportetubos/vis/setColor red
+#/gate/soportetubos/vis/forceWireframe
+
+# 2. Agujero central (coordenadas relativas AL SOPORTE ROTADO)
+#/gate/soportetubos/daughters/name agujero_central
+#/gate/soportetubos/daughters/insert cylinder
+#/gate/agujero_central/setMaterial Air
+#/gate/agujero_central/geometry/setRmax 9.5 mm
+#/gate/agujero_central/geometry/setRmin 0 mm
+#/gate/agujero_central/geometry/setHeight 25.1 mm
+#/gate/agujero_central/placement/setTranslation 0. 0. 0. mm  # Z=12.5 para centrar verticalmente
+#/gate/agujero_central/vis/setColor white
+#/gate/agujero_central/vis/forceWireframe
+
+# 3. Anillo interno (6 agujeros)
+#/gate/soportetubos/daughters/name agujero_interno
+#/gate/soportetubos/daughters/insert cylinder
+#/gate/agujero_interno/setMaterial Air
+#/gate/agujero_interno/geometry/setRmax 9.5 mm
+#/gate/agujero_interno/geometry/setRmin 0 mm
+#/gate/agujero_interno/geometry/setHeight 25.1 mm
+#/gate/agujero_interno/placement/setTranslation 0. 20.5 0. mm  # Y=18.5, Z=14.5
+#/gate/agujero_interno/vis/setColor white
+#/gate/agujero_interno/vis/forceWireframe
+
+#/gate/agujero_interno/repeaters/insert ring
+#/gate/agujero_interno/ring/setRepeatNumber 6
+#/gate/agujero_interno/ring/setFirstAngle 0 deg
+#/gate/agujero_interno/ring/setAngularSpan 360 deg
+#/gate/agujero_interno/ring/setPoint1 0. 0. 1. mm  # Eje de rotaci n Z
+#/gate/agujero_interno/ring/setPoint2 0. 0. 0. mm
+#/gate/agujero_interno/ring/disableAutoRotation
+
+
+# 4. Anillo externo (12 agujeros)
+#/gate/soportetubos/daughters/name agujero_externo
+#/gate/soportetubos/daughters/insert cylinder
+#/gate/agujero_externo/setMaterial Air
+#/gate/agujero_externo/geometry/setRmax 9.5 mm
+#/gate/agujero_externo/geometry/setRmin 0 mm
+#/gate/agujero_externo/geometry/setHeight 25.1 mm
+#/gate/agujero_externo/placement/setTranslation 0. 39. 0. mm  # Y=39, Z=12.5
+#/gate/agujero_externo/vis/setColor white
+#/gate/agujero_externo/vis/forceWireframe
+
+#/gate/agujero_externo/repeaters/insert ring
+#/gate/agujero_externo/ring/setRepeatNumber 12
+#/gate/agujero_externo/ring/setFirstAngle 15 deg
+#/gate/agujero_externo/ring/setAngularSpan 360 deg
+#/gate/agujero_externo/ring/setPoint1 0. 0. 1. mm  # Eje de rotaci n Z
+#/gate/agujero_externo/ring/setPoint2 0. 0. 0. mm
+#/gate/agujero_externo/ring/disableAutoRotation
+
+
+#===============================
+# SOPORTES DE MADERA (alternativa simple)
+#===============================
+# Soporte cil ndrico 1
+/gate/world/daughters/name soportemadera1
+/gate/world/daughters/insert cylinder
+/gate/soportemadera1/setMaterial Wood
+/gate/soportemadera1/geometry/setRmax 59.97 mm
+/gate/soportemadera1/geometry/setRmin 0. mm
+/gate/soportemadera1/geometry/setHeight 9. mm
+/gate/soportemadera1/placement/setRotationAxis 1 0 0
+/gate/soportemadera1/placement/setRotationAngle 90 deg
+/gate/soportemadera1/placement/setTranslation 0. -72.25 0. mm
+/gate/soportemadera1/vis/setColor yellow
+/gate/soportemadera1/vis/forceWireframe
+
+# Soporte cil ndrico 3 (usando repetici n lineal)
+/gate/soportemadera1/repeaters/insert linear
+/gate/soportemadera1/linear/setRepeatNumber 2
+/gate/soportemadera1/linear/setRepeatVector 0. -20.5 0.  mm
+
+# Soporte central en forma de caja (se mantiene igual)
+/gate/world/daughters/name soportemadera2
+/gate/world/daughters/insert box
+/gate/soportemadera2/setMaterial Wood
+/gate/soportemadera2/geometry/setXLength 50. mm
+/gate/soportemadera2/geometry/setYLength 50. mm
+/gate/soportemadera2/geometry/setZLength 9.5 mm
+/gate/soportemadera2/placement/setRotationAxis 1 0 0
+/gate/soportemadera2/placement/setRotationAngle 90 deg
+/gate/soportemadera2/placement/setTranslation 0. -82.5 0. mm
+/gate/soportemadera2/vis/setColor yellow
+/gate/soportemadera2/vis/forceWireframe
+
+
+#===============================
+# RACK PARA FUENTES Co60 (OPTIMIZADO)
+#===============================
+# TAPA INFERIOR DEL RACK
+/gate/world/daughters/name tapa_inferior
+/gate/world/daughters/insert cylinder
+/gate/tapa_inferior/setMaterial StainlessSteel
+/gate/tapa_inferior/geometry/setRmax 85.5 mm
+/gate/tapa_inferior/geometry/setRmin 75.5 mm
+/gate/tapa_inferior/geometry/setHeight 1. mm
+/gate/tapa_inferior/placement/setRotationAxis 1 0 0
+/gate/tapa_inferior/placement/setRotationAngle 90 deg
+/gate/tapa_inferior/placement/setTranslation 0 -100.5 0  mm
+/gate/tapa_inferior/vis/setColor gray
+/gate/tapa_inferior/vis/forceWireframe
+
+# TAPA SUPERIOR DEL RACK
+/gate/world/daughters/name tapa_superior
+/gate/world/daughters/insert cylinder
+/gate/tapa_superior/setMaterial StainlessSteel
+/gate/tapa_superior/geometry/setRmax 85.5 mm
+/gate/tapa_superior/geometry/setRmin 75.5 mm
+/gate/tapa_superior/geometry/setHeight 1. mm
+/gate/tapa_superior/placement/setRotationAxis 1 0 0
+/gate/tapa_superior/placement/setRotationAngle 90 deg
+/gate/tapa_superior/placement/setTranslation 0 100.5 0  mm
+/gate/tapa_superior/vis/setColor gray
+/gate/tapa_superior/vis/forceWireframe
+
+# 4. Lápices como vol menes independientes (solo si son necesarios para simulación)
+/gate/world/daughters/name lapiz_co60
+/gate/world/daughters/insert cylinder
+/gate/lapiz_co60/setMaterial StainlessSteel
+/gate/lapiz_co60/geometry/setRmax 5.0 mm
+/gate/lapiz_co60/geometry/setRmin 4.99 mm
+/gate/lapiz_co60/geometry/setHeight 200. mm
+/gate/lapiz_co60/placement/setRotationAxis 1 0 0
+/gate/lapiz_co60/placement/setRotationAngle 90 deg
+/gate/lapiz_co60/placement/setTranslation 80.5 0. 0.  mm
+/gate/lapiz_co60/vis/setColor gray
+/gate/lapiz_co60/vis/forceSolid
+
+# Repetición de lápices
+/gate/lapiz_co60/repeaters/insert ring
+/gate/lapiz_co60/ring/setRepeatNumber 16
+/gate/lapiz_co60/ring/setFirstAngle 0 deg
+/gate/lapiz_co60/ring/setAngularSpan 360 deg
+/gate/lapiz_co60/ring/setPoint1 0. 0. 0. mm
+/gate/lapiz_co60/ring/setPoint2 0. 1. 0. mm
+/gate/lapiz_co60/ring/disableAutoRotation
+
+
+#====================
+#TAPA- tapa del tubo de vidrio
+#====================
+/gate/world/daughters/name tapa
+/gate/world/daughters/insert cylinder
+/gate/tapa/setMaterial Polypropilene
+/gate/tapa/placement/setTranslation 0. 42.75 0. mm
+/gate/tapa/geometry/setRmax 9.5 mm
+/gate/tapa/geometry/setRmin 0. mm
+/gate/tapa/geometry/setHeight 15.5 mm
+/gate/tapa/placement/setRotationAxis 1 0 0
+/gate/tapa/placement/setRotationAngle 90 deg
+/gate/tapa/vis/setColor white
+/gate/tapa/vis/forceWireframe
+
+#====================
+#TUBO FRICKE
+#====================
+/gate/world/daughters/name tubo
+/gate/world/daughters/insert cylinder
+/gate/tubo/setMaterial Glass
+/gate/tubo/placement/setTranslation 0. -9. 0. mm
+/gate/tubo/geometry/setRmax 8.5 mm
+/gate/tubo/geometry/setRmin 6.52 mm   
+/gate/tubo/geometry/setHeight 87. mm
+/gate/tubo/placement/setRotationAxis 1 0 0
+/gate/tubo/placement/setRotationAngle 90 deg
+/gate/tubo/vis/setColor gray
+/gate/tubo/vis/forceWireframe
+
+#====================
+#SOLUCION ACUOSA FRICKE (detector) (la altura 75.00 mm es acorde a volumen colocado en la experimentación)
+#====================
+/gate/tubo/daughters/name aguafricke
+/gate/tubo/daughters/insert cylinder
+/gate/aguafricke/setMaterial FrickeSolution
+/gate/aguafricke/geometry/setRmax 6.52 mm
+/gate/aguafricke/geometry/setRmin 0. mm
+/gate/aguafricke/geometry/setHeight 75. mm
+/gate/aguafricke/placement/setTranslation 0. 0. 6. mm
+/gate/aguafricke/vis/setColor bluez
+/gate/aguafricke/vis/forceWireframe
+
+/gate/geometry/rebuild
+
+
+#====================
+#PHYSICS PROCESSES
+#====================
+/gate/physics/addPhysicsList emstandard_opt3
+/gate/physics/setEMin 1 keV
+/gate/physics/setEMax 3 GeV
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+
+
+#====================
+#Actividad total de fuente 07/03/2023=119.20 Ci, como son 16 lapices la actividad por cada lapiz = 7.45 Ci
+#====================
+#====================================================
+# FUENTES DE Co-60 (16 l pices)
+#====================================================
+/control/alias ACTIVIDAD 62500 Bq  # (para prueba actividad total = 1x106 Bq)
+/control/alias RADIO_FUENTE 4.8 mm
+/control/alias ALTURA_FUENTE 101 mm
+
+# Fuente 1:  Ángulo 0 
+/gate/source/addSource co60_lapiz0 gps
+/gate/source/co60_lapiz0/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz0/setForcedUnstableFlag false
+/gate/source/co60_lapiz0/gps/particle gamma
+/gate/source/co60_lapiz0/gps/centre 80.5 0 0 mm
+/gate/source/co60_lapiz0/gps/type Volume
+/gate/source/co60_lapiz0/gps/shape Cylinder
+/gate/source/co60_lapiz0/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz0/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz0/gps/energytype UserSpectrum
+/gate/source/co60_lapiz0/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz0/gps/angtype iso
+
+# Fuente 2:  Ángulo 22.5 
+/gate/source/addSource co60_lapiz22.5 gps
+/gate/source/co60_lapiz22.5/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz22.5/setForcedUnstableFlag false
+/gate/source/co60_lapiz22.5/gps/particle gamma
+/gate/source/co60_lapiz22.5/gps/centre 74.662 0 30.828 mm
+/gate/source/co60_lapiz22.5/gps/type Volume
+/gate/source/co60_lapiz22.5/gps/shape Cylinder
+/gate/source/co60_lapiz22.5/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz22.5/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz22.5/gps/energytype UserSpectrum
+/gate/source/co60_lapiz22.5/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz22.5/gps/angtype iso
+
+# Fuente 3:  Ángulo 45 
+/gate/source/addSource co60_lapiz45 gps
+/gate/source/co60_lapiz45/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz45/setForcedUnstableFlag false
+/gate/source/co60_lapiz45/gps/particle gamma
+/gate/source/co60_lapiz45/gps/centre 56.923 0 56.923 mm
+/gate/source/co60_lapiz45/gps/type Volume
+/gate/source/co60_lapiz45/gps/shape Cylinder
+/gate/source/co60_lapiz45/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz45/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz45/gps/energytype UserSpectrum
+/gate/source/co60_lapiz45/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz45/gps/angtype iso
+
+# Fuente 4:  Ángulo 67.5 
+/gate/source/addSource co60_lapiz67.5 gps
+/gate/source/co60_lapiz67.5/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz67.5/setForcedUnstableFlag false
+/gate/source/co60_lapiz67.5/gps/particle gamma
+/gate/source/co60_lapiz67.5/gps/centre 30.828 0 74.662 mm
+/gate/source/co60_lapiz67.5/gps/type Volume
+/gate/source/co60_lapiz67.5/gps/shape Cylinder
+/gate/source/co60_lapiz67.5/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz67.5/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz67.5/gps/energytype UserSpectrum
+/gate/source/co60_lapiz67.5/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz67.5/gps/angtype iso
+
+# Fuente 5:  Ángulo 90 
+/gate/source/addSource co60_lapiz90 gps
+/gate/source/co60_lapiz90/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz90/setForcedUnstableFlag false
+/gate/source/co60_lapiz90/gps/particle gamma
+/gate/source/co60_lapiz90/gps/centre 0 0 80.5 mm
+/gate/source/co60_lapiz90/gps/type Volume
+/gate/source/co60_lapiz90/gps/shape Cylinder
+/gate/source/co60_lapiz90/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz90/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz90/gps/energytype UserSpectrum
+/gate/source/co60_lapiz90/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz90/gps/angtype iso
+
+# Fuente 6:  Ángulo 112.5 
+/gate/source/addSource co60_lapiz112.5 gps
+/gate/source/co60_lapiz112.5/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz112.5/setForcedUnstableFlag false
+/gate/source/co60_lapiz112.5/gps/particle gamma
+/gate/source/co60_lapiz112.5/gps/centre -30.828 0 74.662 mm
+/gate/source/co60_lapiz112.5/gps/type Volume
+/gate/source/co60_lapiz112.5/gps/shape Cylinder
+/gate/source/co60_lapiz112.5/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz112.5/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz112.5/gps/energytype UserSpectrum
+/gate/source/co60_lapiz112.5/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz112.5/gps/angtype iso
+
+# Fuente 7:  Ángulo 135 
+/gate/source/addSource co60_lapiz135 gps
+/gate/source/co60_lapiz135/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz135/setForcedUnstableFlag false
+/gate/source/co60_lapiz135/gps/particle gamma
+/gate/source/co60_lapiz135/gps/centre -56.923 0 56.923 mm
+/gate/source/co60_lapiz135/gps/type Volume
+/gate/source/co60_lapiz135/gps/shape Cylinder
+/gate/source/co60_lapiz135/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz135/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz135/gps/energytype UserSpectrum
+/gate/source/co60_lapiz135/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz135/gps/angtype iso
+
+# Fuente 8:  Ángulo 157.5 
+/gate/source/addSource co60_lapiz157.5 gps
+/gate/source/co60_lapiz157.5/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz157.5/setForcedUnstableFlag false
+/gate/source/co60_lapiz157.5/gps/particle gamma
+/gate/source/co60_lapiz157.5/gps/centre -74.662 0 30.828 mm
+/gate/source/co60_lapiz157.5/gps/type Volume
+/gate/source/co60_lapiz157.5/gps/shape Cylinder
+/gate/source/co60_lapiz157.5/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz157.5/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz157.5/gps/energytype UserSpectrum
+/gate/source/co60_lapiz157.5/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz157.5/gps/angtype iso
+
+# Fuente 9:  Ángulo 180 
+/gate/source/addSource co60_lapiz180 gps
+/gate/source/co60_lapiz180/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz180/setForcedUnstableFlag false
+/gate/source/co60_lapiz180/gps/particle gamma
+/gate/source/co60_lapiz180/gps/centre -80.5 0 0 mm
+/gate/source/co60_lapiz180/gps/type Volume
+/gate/source/co60_lapiz180/gps/shape Cylinder
+/gate/source/co60_lapiz180/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz180/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz180/gps/energytype UserSpectrum
+/gate/source/co60_lapiz180/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz180/gps/angtype iso
+
+# Fuente 10:  Ángulo 202.5 
+/gate/source/addSource co60_lapiz202.5 gps
+/gate/source/co60_lapiz202.5/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz202.5/setForcedUnstableFlag false
+/gate/source/co60_lapiz202.5/gps/particle gamma
+/gate/source/co60_lapiz202.5/gps/centre -74.662 0 -30.828 mm
+/gate/source/co60_lapiz202.5/gps/type Volume
+/gate/source/co60_lapiz202.5/gps/shape Cylinder
+/gate/source/co60_lapiz202.5/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz202.5/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz202.5/gps/energytype UserSpectrum
+/gate/source/co60_lapiz202.5/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz202.5/gps/angtype iso
+
+# Fuente 11:  Ángulo 225 
+/gate/source/addSource co60_lapiz225 gps
+/gate/source/co60_lapiz225/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz225/setForcedUnstableFlag false
+/gate/source/co60_lapiz225/gps/particle gamma
+/gate/source/co60_lapiz225/gps/centre -56.923 0 -56.923 mm
+/gate/source/co60_lapiz225/gps/type Volume
+/gate/source/co60_lapiz225/gps/shape Cylinder
+/gate/source/co60_lapiz225/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz225/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz225/gps/energytype UserSpectrum
+/gate/source/co60_lapiz225/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz225/gps/angtype iso
+
+# Fuente 12:  Ángulo 247.5 
+/gate/source/addSource co60_lapiz247.5 gps
+/gate/source/co60_lapiz247.5/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz247.5/setForcedUnstableFlag false
+/gate/source/co60_lapiz247.5/gps/particle gamma
+/gate/source/co60_lapiz247.5/gps/centre -30.828 0 -74.662 mm
+/gate/source/co60_lapiz247.5/gps/type Volume
+/gate/source/co60_lapiz247.5/gps/shape Cylinder
+/gate/source/co60_lapiz247.5/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz247.5/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz247.5/gps/energytype UserSpectrum
+/gate/source/co60_lapiz247.5/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz247.5/gps/angtype iso
+
+# Fuente 13:  Ángulo 270 
+/gate/source/addSource co60_lapiz270 gps
+/gate/source/co60_lapiz270/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz270/setForcedUnstableFlag false
+/gate/source/co60_lapiz270/gps/particle gamma
+/gate/source/co60_lapiz270/gps/centre 0 0 -80.5 mm
+/gate/source/co60_lapiz270/gps/type Volume
+/gate/source/co60_lapiz270/gps/shape Cylinder
+/gate/source/co60_lapiz270/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz270/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz270/gps/energytype UserSpectrum
+/gate/source/co60_lapiz270/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz270/gps/angtype iso
+
+# Fuente 14:  Ángulo 292.5 
+/gate/source/addSource co60_lapiz292.5 gps
+/gate/source/co60_lapiz292.5/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz292.5/setForcedUnstableFlag false
+/gate/source/co60_lapiz292.5/gps/particle gamma
+/gate/source/co60_lapiz292.5/gps/centre 30.828 0 -74.662 mm
+/gate/source/co60_lapiz292.5/gps/type Volume
+/gate/source/co60_lapiz292.5/gps/shape Cylinder
+/gate/source/co60_lapiz292.5/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz292.5/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz292.5/gps/energytype UserSpectrum
+/gate/source/co60_lapiz292.5/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz292.5/gps/angtype iso
+
+# Fuente 15:  Ángulo 315 
+/gate/source/addSource co60_lapiz315 gps
+/gate/source/co60_lapiz315/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz315/setForcedUnstableFlag false
+/gate/source/co60_lapiz315/gps/particle gamma
+/gate/source/co60_lapiz315/gps/centre 56.923 0 -56.923 mm
+/gate/source/co60_lapiz315/gps/type Volume
+/gate/source/co60_lapiz315/gps/shape Cylinder
+/gate/source/co60_lapiz315/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz315/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz315/gps/energytype UserSpectrum
+/gate/source/co60_lapiz315/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz315/gps/angtype iso
+
+# Fuente 16:  Ángulo 337.5 
+/gate/source/addSource co60_lapiz337.5 gps
+/gate/source/co60_lapiz337.5/setActivity {ACTIVIDAD}
+/gate/source/co60_lapiz337.5/setForcedUnstableFlag false
+/gate/source/co60_lapiz337.5/gps/particle gamma
+/gate/source/co60_lapiz337.5/gps/centre 74.662 0 -30.828 mm
+/gate/source/co60_lapiz337.5/gps/type Volume
+/gate/source/co60_lapiz337.5/gps/shape Cylinder
+/gate/source/co60_lapiz337.5/gps/radius {RADIO_FUENTE}
+/gate/source/co60_lapiz337.5/gps/halfy {ALTURA_FUENTE}
+/gate/source/co60_lapiz337.5/gps/energytype UserSpectrum
+/gate/source/co60_lapiz337.5/gps/setSpectrumFile /fuente3/undetector/DiscreteSpectrumCo60.txt
+/gate/source/co60_lapiz337.5/gps/angtype iso
+
+
+#====================
+#DOSE ACTOR (para dosis y energía total absorbida en aguafricke)
+#====================
+/gate/actor/addActor DoseActor dose_fricke
+/gate/actor/dose_fricke/attachTo aguafricke
+/gate/actor/dose_fricke/enableDose true                                   # Activa cálculo de dosis
+/gate/actor/dose_fricke/enableEdep true                                   # Activa energía depositada
+/gate/actor/dose_fricke/enableUncertaintyDose true 
+/gate/actor/dose_fricke/enableUncertaintyEdep true 
+/gate/actor/dose_fricke/stepHitType random
+/gate/actor/dose_fricke/setDoseAlgorithm VolumeWeighting
+/gate/actor/dose_fricke/save /fuente3/undetector/output/dose_fricke.txt   # Cambiar a formato ASCII (m s ligero)
+
+
+
+#====================
+# ACTOR 2 (actor para contar partículas)
+#====================
+/gate/actor/addActor SimulationStatisticActor stat
+/gate/actor/stat/save /fuente3/undetector/output/stat.txt
+
+# Producción y detención
+/gate/actor/addActor ProductionAndStoppingActor traj
+/gate/actor/traj/attachTo aguafricke
+/gate/actor/traj/save /fuente3/undetector/output/trajProductionStopping.txt
+
+
+
+#====================
+#INITIALIZE
+#====================
+/gate/run/initialize
+
+
+#====================
+#TIME SLICE
+#====================
+/gate/application/setTimeSlice     10. s
+/gate/application/setTimeStart     0.  s
+/gate/application/setTimeStop      10. s
+
+
+#====================
+#SEED 
+#====================
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/random/verbose 0
+
+
+#====================
+#START ACQUISITION
+#====================
+/gate/application/start
+
+
+
+
